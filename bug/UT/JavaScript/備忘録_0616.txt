@@ -1,0 +1,14 @@
+replaceTargetのUTにて、
+1.replaceメソッドを適用する文字列がundefinedだと、TypeErrorが発生する。
+※そもそもundefinedとは?
+「var sample;」のように、sampleという名前の変数を宣言しただけで、変数の中身はない。
+このような状態は「変数に値が定義されていない」⇒undefined
+undefinedかどうかを判定する際には厳密等価演算子（===）を使用する必要がある。
+※nullとundefinedの違いは？
+undefinedは変数を宣言し、値を代入する前の状態メモリは確保したが、値は未確定）
+nullはNULLというシンボル（0が割り当てられている）
+nullかどうかを判定する際には、undefined同様に厳密等価演算子を使用する必要がある。
+undefinedでもnullでもいいから緩く評価するときは、等価演算子で評価する。
+※まとめ
+「未定義であること(undefined)」と「該当する値がないこと(null）」
+⇒何も対策しないことにする。replaceTarget関数は、他から呼び出されることを想定したものであるため、引数がundefinedやnullが来ることは無いと予想する。

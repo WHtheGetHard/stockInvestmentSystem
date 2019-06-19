@@ -1,0 +1,9 @@
+RegistTradingCostTypeSelectCheckのUTにて
+1.IntegerクラスのparseIntメソッドの引数に数値以外の文字列を指定すると、NumberFormatExceptionが発生して異常終了する。
+parseIntメソッドをtry句で使用し、NumberFormatExceptionが発生した場合は、指定範囲外と同様の例外処理を実施し、異常終了しないよう対応
+
+2.IntegerクラスのparseIntメソッドの引数に全角数字の文字列を指定すると、半角数値として扱われる。
+HalfNumberCheckクラスのexecCheckメソッドがfalseの場合は、指定範囲外と同様の例外処理を実施。これに合わせて、1の対応は削除
+
+3.HalfNumberCheckクラスのexecCheckメソッドで2桁の半角数値を入力すると、matchメソッドの結果がfalseになる
+正規表現を1文字から1文字以上に変更した"^[0-9]$"⇒"[0-9]+$"
