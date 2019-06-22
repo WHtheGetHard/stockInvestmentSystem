@@ -1,0 +1,2 @@
+zeroSuppressionのUTにて
+1.文字列型のmatchメソッドを呼び出した際に、null・undefinedだとエラーが発生する。
