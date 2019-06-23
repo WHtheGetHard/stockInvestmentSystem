@@ -1,3 +1,5 @@
+// 詳細なチェックは、input-check-common-handling.jsで定義された関数を用いて判定する。
+
 // 各入力チェックの値を判別する
 var isValidInput = false;
 
@@ -5,8 +7,19 @@ var isValidInput = false;
 $('input[data-type="currency"]').on('keyup', function() {
 	let $currencyObj = $(this);
 
+
+	// 入力値が文字列型でない場合は、処理を終了
+	let isString = isString($currencyObj.val());
+
+	if (!isString) {
+		isValidInput = false;
+		return;
+	}
+
+
 	// カンマ編集されている場合を考慮して、カンマを削除した入力値を取得する。
 	let inputValue = replaceTarget($currencyObj.val(), 'comma');
+
 
 	// 半角数値のみ(true)かをチェックする(onlyHalfNumberCheck())
 	let isOnlyHalfNumber = onlyHalfNumberCheck(inputValue);
@@ -20,15 +33,16 @@ $('input[data-type="currency"]').on('keyup', function() {
 		// 各入力チェックの値をtrueに設定する
 		isValidInput = true;
 
-	// 半角数値以外の場合は、半角数値以外の値を削除（toOnlyHalfNumber())
+	// 半角数値以外の場合は、半角数値以外の値を削除（convertToOnlyHalfNumber())
 	} else {
-		inputValue = toOnlyHalfNumber(inputValue);
+		inputValue = convertToOnlyHalfNumber(inputValue);
 		// 半角数値以外の値が削除された入力値をテキストボックスに反映する。
 		overWriteTextBox($currencyObj, inputValue);
 
 		// 各入力チェックの値をfalseに設定する
-		isValidInput = false;
+		isValidInput = true;
 	}
+
 
 	// これまでの処理で半角数値しか残っていないため、3桁ごとのカンマ編集(editComma())を実施する。
 	overWriteTextBox($currencyObj,editComma(inputValue));
@@ -38,6 +52,16 @@ $('input[data-type="currency"]').on('keyup', function() {
 $('input[data-type="percentage"]').blur(function() {
 	let inputValue = $(this).val();
 	let elementTitle = $(this).prop('title');
+
+
+	// 入力値が文字列型でない場合は、処理を終了
+	let isString = isString(inputValue);
+
+	if (!isString) {
+		isValidInput = false;
+		return;
+	}
+
 
 	// ピリオドを削除した値を取得する。
 	let replacePeriodInputValue = replaceTarget(inputValue, 'period');
@@ -53,7 +77,9 @@ $('input[data-type="percentage"]').blur(function() {
 		return;
 	}
 
-	let isThirdDecimal = percentageConfirm(inputValue);
+
+	// 小数点第三位までの小数であることを確認する。
+	let isThirdDecimal = confirmPercentageType(inputValue);
 
 	if (isThirdDecimal) {
 		isValidInput = true;
@@ -70,7 +96,17 @@ $('input[data-type="percentage"]').blur(function() {
 $('input[data-type="yyyymmdd"]').blur(function() {
 	let inputValue = $(this).val();
 
+	// 入力値が文字列型でない場合は、処理を終了
+	let isString = isString(inputValue);
+
+	if (!isString) {
+		isValidInput = false;
+		return;
+	}
+
+
 	// yyyy/mm/dd形式で入力(true)されていることを確認する。
+	// TODO:dateCheck()の命名規則⇒checkDate～に変更（動詞＋〇〇～）すること
 	let isCorrectForm = dateCheck(inputValue);
 
 	let isAllInputed = false;

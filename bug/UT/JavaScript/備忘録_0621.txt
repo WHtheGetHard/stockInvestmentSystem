@@ -1,2 +1,2 @@
-zeroSuppressionã®UTã«ã¦
-1.æ–‡å­—åˆ—åž‹ã®matchãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸéš›ã«ã€nullãƒ»undefinedã ã¨ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹ã€‚
+zeroSuppression‚ÌUT‚É‚Ä
+1.•¶Žš—ñmatchƒƒ\ƒbƒh‚ðŒÄ‚Ño‚µ‚½Û‚ÉAnullEundefined‚¾‚ÆƒGƒ‰[‚ª”­¶‚·‚éB

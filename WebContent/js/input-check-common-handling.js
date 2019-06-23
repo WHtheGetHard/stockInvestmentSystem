@@ -42,7 +42,7 @@ function dateCheck(inputValue) {
 
 // 半角数値以外を削除するメソッド（正規表現を使用して、半角数値以外を削除する）
 // ※即時で削除するため、replaceメソッドを使用している⇒削除されるのは1文字のみ
-function toOnlyHalfNumber(inputValue) {
+function convertToOnlyHalfNumber(inputValue) {
 	const regexp = new RegExp('[^0-9]');
 
 	let alreadyCleared = inputValue.replace(regexp,'');
@@ -114,7 +114,7 @@ function startSetBeforeEnd($jQueryObjects) {
 }
 
 // 税率を確認する。(小数点第3位まで許容する）
-function percentageConfirm(inputValue) {
+function confirmPercentageType(inputValue) {
 	const regexp = new RegExp('^[0-9]{1}\.[0-9]{0,3}$');
 
 	let isThirdDecimal = isMatchedCheck(inputValue, regexp);
@@ -261,4 +261,19 @@ function isMatchedCheck(targetString, regexp) {
 	}
 
 	return isMatched;
+}
+
+// 第一引数の型が文字列であるかを確認するメソッド(戻り値は真偽値)
+function isString(inputValue) {
+	let isString = false;
+
+	let dataType = typeof inputValue;
+
+	if (dataType === 'string') {
+		isString = true;
+	} else {
+		isString = false;
+	}
+
+	return isString;
 }
