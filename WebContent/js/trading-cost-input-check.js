@@ -9,7 +9,7 @@ $('input[data-type="currency"]').on('keyup', function() {
 
 
 	// 入力値が文字列型でない場合は、処理を終了
-	let isString = isString($currencyObj.val());
+	let isString = isStrings($currencyObj.val());
 
 	if (!isString) {
 		isValidInput = false;
@@ -55,7 +55,7 @@ $('input[data-type="percentage"]').blur(function() {
 
 
 	// 入力値が文字列型でない場合は、処理を終了
-	let isString = isString(inputValue);
+	let isString = isStrings(inputValue);
 
 	if (!isString) {
 		isValidInput = false;
@@ -97,7 +97,7 @@ $('input[data-type="yyyymmdd"]').blur(function() {
 	let inputValue = $(this).val();
 
 	// 入力値が文字列型でない場合は、処理を終了
-	let isString = isString(inputValue);
+	let isString = isStrings(inputValue);
 
 	if (!isString) {
 		isValidInput = false;

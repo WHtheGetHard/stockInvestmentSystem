@@ -264,7 +264,7 @@ function isMatchedCheck(targetString, regexp) {
 }
 
 // 第一引数の型が文字列であるかを確認するメソッド(戻り値は真偽値)
-function isString(inputValue) {
+function isStrings(inputValue) {
 	let isString = false;
 
 	let dataType = typeof inputValue;
