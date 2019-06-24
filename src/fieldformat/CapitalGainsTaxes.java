@@ -1,21 +1,11 @@
 package fieldformat;
 
 public class CapitalGainsTaxes {
-	private int id;
-
 	private String taxRate;
 
 	private String startDay;
 
 	private String endDay;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getTaxRate() {
 		return taxRate;
