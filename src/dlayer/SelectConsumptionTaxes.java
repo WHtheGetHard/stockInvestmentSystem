@@ -15,14 +15,14 @@ public class SelectConsumptionTaxes {
 	final String user = dbConnectionInfo.getUser();
 	final String password = dbConnectionInfo.getPassword();
 
-	final String targetTable = "SELECT * FROM consumption_taxes ";
+	final String selectAll = "SELECT * FROM consumption_taxes ";
 
 	public ConsumptionTaxes selectFromPrimaryKey(String startDay, String endDay) throws SQLException {
 		ConsumptionTaxes consumptionTaxes = new ConsumptionTaxes();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE start_day = ? AND end_day = ?";
+		String sql = selectAll + "WHERE start_day = ? AND end_day = ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, startDay);
@@ -48,7 +48,7 @@ public class SelectConsumptionTaxes {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE start_day < ? AND end_day > ?";
+		String sql = selectAll + "WHERE start_day < ? AND end_day > ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, day);
@@ -67,5 +67,29 @@ public class SelectConsumptionTaxes {
 		conn.close();
 
 		return consumptionTaxes;
+	}
+
+	public int selectCountFromPrimaryKey(String startDay, String endDay) throws SQLException {
+		int count = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = "SELECT count(tax_rate) FROM consumption_taxes WHERE start_day = ? AND end_day = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, startDay);
+		psttmt.setString(2, endDay);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			count = rs.getInt("count(tax_rate)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return count;
 	}
 }
