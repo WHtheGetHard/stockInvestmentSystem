@@ -33,20 +33,39 @@ public class TestSelectStockCompanies {
 //			String companyName = "";
 //			String companyName = "大塚";
 //			String companyName = null;
-			String companyName = "重複";
+//			String companyName = "重複";
 //
-			stockCompanies = selectStockCompanies.selecFromCompanyName(companyName);
+//			stockCompanies = selectStockCompanies.selecFromCompanyName(companyName);
+//
+//			int stockCompaniesNumber = stockCompanies.size();
+//
+//			for (int i = 0; i < stockCompaniesNumber; i++) {
+//				System.out.println("id : " + stockCompanies.get(i).getId());
+//				System.out.println("company_name : " + stockCompanies.get(i).getComapnyName());
+//			}
+//			//-----------------selecFromCompanyNameメソッドの確認-----------------
 
-			int stockCompaniesNumber = stockCompanies.size();
 
-			for (int i = 0; i < stockCompaniesNumber; i++) {
-				System.out.println("id : " + stockCompanies.get(i).getId());
-				System.out.println("company_name : " + stockCompanies.get(i).getComapnyName());
-			}
-			//-----------------selecFromCompanyNameメソッドの確認-----------------
+
+			// --------------------selectCountFromCompanyNameメソッドの確認--------------------
+
+//			String companyName = "楽天";
+//			String companyName = "野村";
+//			String companyName = "";
+//			String companyName = "大塚";
+//			String companyName = null;
+			String companyName = "重複";
+
+			int count = selectStockCompanies.selectCountFromCompanyName(companyName);
+
+			System.out.println(count);
+
+
+			// --------------------selectCountFromCompanyNameメソッドの確認--------------------
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+
 	}
 }

@@ -11,16 +11,18 @@ import fieldformat.StockCompanies;
 
 public class SelectStockCompanies {
 	DBConnectionInfo dbConnectionInfo = new DBConnectionInfo();
-	String url = dbConnectionInfo.getUrl();
-	String user = dbConnectionInfo.getUser();
-	String password = dbConnectionInfo.getPassword();
+	final String url = dbConnectionInfo.getUrl();
+	final String user = dbConnectionInfo.getUser();
+	final String password = dbConnectionInfo.getPassword();
+
+	final String selectAll = "SELECT * FROM stock_companies ";
 
 	public StockCompanies selectFromId(int id) throws SQLException {
 		StockCompanies stockCompanies = new StockCompanies();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = "SELECT * FROM stock_companies WHERE id = ?";
+		String sql = selectAll + "WHERE id = ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setInt(1, id);
@@ -44,7 +46,7 @@ public class SelectStockCompanies {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = "SELECT * FROM stock_companies WHERE company_name = ?";
+		String sql = selectAll + "WHERE company_name = ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, companyName);
@@ -64,5 +66,28 @@ public class SelectStockCompanies {
 		conn.close();
 
 		return stockCompanies;
+	}
+
+	public int selectCountFromCompanyName(String companyName) throws SQLException {
+		int count = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = "SELECT count(company_name) FROM stock_companies WHERE company_name = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, companyName);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while(rs.next()) {
+			count = rs.getInt("count(company_name)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return count;
 	}
 }
