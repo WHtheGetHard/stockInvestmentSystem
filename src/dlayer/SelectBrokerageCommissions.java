@@ -16,14 +16,14 @@ public class SelectBrokerageCommissions {
 	final String user = dbConnectionInfo.getUser();
 	final String password = dbConnectionInfo.getPassword();
 
-	final String targetTable = "SELECT * FROM brokerage_commissions ";
+	final String selectAll = "SELECT * FROM brokerage_commissions ";
 
 	public BrokerageCommissions selectFromPrimaryKey(int campanyId, String startDay, String endDay) throws SQLException {
 		BrokerageCommissions brokerageCommissions = new BrokerageCommissions();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE campany_id = ? AND start_day = ? AND end_day = ?";
+		String sql = selectAll + "WHERE campany_id = ? AND start_day = ? AND end_day = ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setInt(1, campanyId);
@@ -53,7 +53,7 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE campany_id = ?";
+		String sql = selectAll + "WHERE campany_id = ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setInt(1, campanyId);
@@ -85,7 +85,7 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE start_day < ? AND end_day > ?";
+		String sql = selectAll + "WHERE start_day < ? AND end_day > ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, day);
@@ -116,7 +116,7 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = targetTable + "WHERE campany_id = ? AND start_day < ? AND end_day > ?";
+		String sql = selectAll + "WHERE campany_id = ? AND start_day < ? AND end_day > ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setInt(1, campanyId);
@@ -141,5 +141,30 @@ public class SelectBrokerageCommissions {
 		conn.close();
 
 		return brokerageCommissions;
+	}
+
+	public int selectCountFromPrimaryKey(int campanyId, String startDay, String endDay) throws SQLException {
+		int count = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = "SELECT count(campany_id) FROM brokerage_commissions WHERE campany_id = ? AND start_day = ? AND end_day = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setInt(1, campanyId);
+		psttmt.setString(2, startDay);
+		psttmt.setString(3, endDay);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			count = rs.getInt("count(campany_id)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return count;
 	}
 }

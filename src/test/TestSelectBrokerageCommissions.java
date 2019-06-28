@@ -1,10 +1,8 @@
 package test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import dlayer.SelectBrokerageCommissions;
-import fieldformat.BrokerageCommissions;
 
 public class TestSelectBrokerageCommissions {
 	public static void main(String[] args) {
@@ -106,26 +104,49 @@ public class TestSelectBrokerageCommissions {
 //		int campanyId = 1;
 //		String day = "2019/03/31";
 //
-		int campanyId = 1;
-		String day = "2019/03/32";
+//		int campanyId = 1;
+//		String day = "2019/03/32";
 
-		ArrayList<BrokerageCommissions> brokerageCommissions = new ArrayList<BrokerageCommissions>();
+//		ArrayList<BrokerageCommissions> brokerageCommissions = new ArrayList<BrokerageCommissions>();
+//
+//		try {
+//			brokerageCommissions = selectBrokerageCommissions.selectValidRecord(campanyId, day);
+//
+//			int resultNumber = brokerageCommissions.size();
+//
+//			for (int i = 0; i < resultNumber; i++) {
+//				System.out.println("campany_id : " + brokerageCommissions.get(i).getCampanyId());
+//				System.out.println("brokerage_commission : " + brokerageCommissions.get(i).getBrokerageCommission());
+//				System.out.println("start_day : " + brokerageCommissions.get(i).getStartDay());
+//				System.out.println("end_day : " + brokerageCommissions.get(i).getEndDay());
+//			}
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+		// -----------------selectValidRecord()の確認-----------------
+
+
+		// -----------------selectCountFromPrimaryKey()の確認-----------------
+//		int campanyId = 1;
+//		String startDay = "2018/04/01";
+//		String endDay = "2019/03/31";
+
+//		int campanyId = 1;
+//		String startDay = "2018/04/02";
+//		String endDay = "2019/03/31";
+//
+		int campanyId = 1;
+		String startDay = "2018/04/01";
+		String endDay = "2019/03/30";
 
 		try {
-			brokerageCommissions = selectBrokerageCommissions.selectValidRecord(campanyId, day);
-
-			int resultNumber = brokerageCommissions.size();
-
-			for (int i = 0; i < resultNumber; i++) {
-				System.out.println("campany_id : " + brokerageCommissions.get(i).getCampanyId());
-				System.out.println("brokerage_commission : " + brokerageCommissions.get(i).getBrokerageCommission());
-				System.out.println("start_day : " + brokerageCommissions.get(i).getStartDay());
-				System.out.println("end_day : " + brokerageCommissions.get(i).getEndDay());
-			}
+			System.out.println("既に登録済みの件数 :" + selectBrokerageCommissions.selectCountFromPrimaryKey(campanyId, startDay, endDay));
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		// -----------------selectValidRecord()の確認-----------------
+		// -----------------selectCountFromPrimaryKey()の確認-----------------
+
 	}
 }
