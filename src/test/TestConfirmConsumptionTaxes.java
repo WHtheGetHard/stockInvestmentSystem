@@ -10,10 +10,10 @@ public class TestConfirmConsumptionTaxes {
 //		String startDay = "1999/04/01";
 //		String endDay = "2000/03/31";
 
-		String startDay = "1999/04/01";
-		String endDay = "2000/03/32";
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/32";
 
-		System.out.println("既に登録済み　: " + confirmConsumptionTaxes.confirmExists(startDay, endDay));
+//		System.out.println("既に登録済み　: " + confirmConsumptionTaxes.confirmExists(startDay, endDay));
 		// -------------confirmExists()の確認-------------
 
 		// -------------confirmOverlap()の確認-------------

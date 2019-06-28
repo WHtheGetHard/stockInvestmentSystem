@@ -86,16 +86,41 @@ public class TestSelectConsumptionTaxes {
 //		String startDay = "1999/04/02";
 //		String endDay = "2000/03/31";
 //
-		String startDay = "1999/04/01";
-		String endDay = "2000/03/30";
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/30";
+//
+//		try {
+//			System.out.println("登録済み件数 ： " + selectConsumptionTaxes.selectCountFromPrimaryKey(startDay, endDay));
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
 
+		// -------------------selectCountFromPrimaryKey()の確認-------------------
+
+
+		// -------------selectCountTermOverLap()の確認-------------
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/31";
+
+//		String startDay = "1999/04/02";
+//		String endDay = "2000/03/31";
+//
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/30";
+//
+//		String startDay = "1999/04/02";
+//		String endDay = "2000/03/30";
+//
+		String startDay = "1998/03/31";
+		String endDay = "1999/04/01";
 		try {
-			System.out.println("登録済み件数 ： " + selectConsumptionTaxes.selectCountFromPrimaryKey(startDay, endDay));
+			System.out.println("期間の重複件数 ; " + selectConsumptionTaxes.selectCountTermOverLap(startDay, endDay));
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 
-		// -------------------selectCountFromPrimaryKey()の確認-------------------
+		// -------------selectCountTermOverLap()の確認-------------
 	}
 }
