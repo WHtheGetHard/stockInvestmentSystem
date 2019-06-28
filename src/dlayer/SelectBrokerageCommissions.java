@@ -17,6 +17,7 @@ public class SelectBrokerageCommissions {
 	final String password = dbConnectionInfo.getPassword();
 
 	final String selectAll = "SELECT * FROM brokerage_commissions ";
+	final String selectCount = "SELECT count(campany_id) FROM brokerage_commissions WHERE ";
 
 	public BrokerageCommissions selectFromPrimaryKey(int campanyId, String startDay, String endDay) throws SQLException {
 		BrokerageCommissions brokerageCommissions = new BrokerageCommissions();
@@ -148,7 +149,32 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = "SELECT count(campany_id) FROM brokerage_commissions WHERE campany_id = ? AND start_day = ? AND end_day = ?";
+		String sql = selectCount + "campany_id = ? AND start_day = ? AND end_day = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setInt(1, campanyId);
+		psttmt.setString(2, startDay);
+		psttmt.setString(3, endDay);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			count = rs.getInt("count(campany_id)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return count;
+	}
+
+	public int selectCountTermOverLap(int campanyId, String startDay, String endDay) throws SQLException {
+		int count = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectCount + "campany_id = ? AND start_day <= ? AND end_day >= ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setInt(1, campanyId);

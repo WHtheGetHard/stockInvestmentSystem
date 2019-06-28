@@ -67,15 +67,36 @@ public class TestSelectCapitalGainsTaxes {
 //		String startDay = "2010/04/02";
 //		String endDay = "2016/03/31";
 
-		String startDay = "2010/04/01";
-		String endDay = "2016/03/30";
+//		String startDay = "2010/04/01";
+//		String endDay = "2016/03/30";
+//
+//		try {
+//			System.out.println("既に登録済み：" + selectCapitalGainsTaxes.selectCountFromPrimaryKey(startDay, endDay));
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+		// ----------------------selectCountFromPrimaryKey()の確認----------------------
 
+
+		// ----------------------selectCountTermOverLap()の確認----------------------
+//		String startDay = "2019/06/25";
+//		String endDay = "2019/06/26";
+
+//		String startDay = "2019/06/25";
+//		String endDay = "2019/06/25";
+//
+//		String startDay = "2019/06/26";
+//		String endDay = "2019/06/26";
+//
+		String startDay = "2019/06/26";
+		String endDay = "2019/06/27";
 		try {
-			System.out.println("既に登録済み：" + selectCapitalGainsTaxes.selectCountFromPrimaryKey(startDay, endDay));
+			System.out.println("期間の重複件数 : " + selectCapitalGainsTaxes.selectCountTermOverLap(startDay, endDay));
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		// ----------------------selectCountFromPrimaryKey()の確認----------------------
+		// ----------------------selectCountTermOverLap()の確認----------------------
 	}
 }

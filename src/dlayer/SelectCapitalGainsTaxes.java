@@ -16,6 +16,7 @@ public class SelectCapitalGainsTaxes {
 	final String password = dbConnectionInfo.getPassword();
 
 	final String selectAll = "SELECT * FROM capital_gains_taxes ";
+	final String selectCount = "SELECT count(tax_rate) FROM capital_gains_taxes ";
 
 	public CapitalGainsTaxes selectFromPrimaryKey(String startDay, String endDay) throws SQLException {
 		CapitalGainsTaxes capitalGainsTaxes =  new CapitalGainsTaxes();
@@ -75,7 +76,31 @@ public class SelectCapitalGainsTaxes {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = "SELECT count(tax_rate) FROM capital_gains_taxes WHERE start_day = ? AND end_day = ?";
+		String sql = selectCount + "WHERE start_day = ? AND end_day = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, startDay);
+		psttmt.setString(2, endDay);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			count = rs.getInt("count(tax_rate)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return count;
+	}
+
+	public int selectCountTermOverLap(String startDay, String endDay) throws SQLException {
+		int count = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectCount + "WHERE start_day <= ? AND end_day >= ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, startDay);
