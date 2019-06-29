@@ -17,11 +17,25 @@ public class TestConfirmConsumptionTaxes {
 		// -------------confirmExists()の確認-------------
 
 		// -------------confirmOverlap()の確認-------------
-//		String day = "1999/04/02";
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/31";
 
-		String day = "1999/04/01";
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/30";
+//
+//		String startDay = "1999/04/02";
+//		String endDay = "2000/03/31";
+//
+//		String startDay = "1999/04/02";
+//		String endDay = "2000/03/30";
+//
+//		String startDay = "1999/04/01";
+//		String endDay = "2000/03/32";
+//
+		String startDay = "1998/04/01";
+		String endDay = "1999/03/31";
 
-		System.out.println("期間の重複：" + confirmConsumptionTaxes.confirmOverlap(day));
+		System.out.println("期間の重複：" + confirmConsumptionTaxes.confirmOverlap(startDay, endDay));
 		// -------------confirmOverlap()の確認-------------
 	}
 }

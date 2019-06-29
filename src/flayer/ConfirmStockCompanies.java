@@ -11,7 +11,7 @@ public class ConfirmStockCompanies {
 		boolean alreadyRegistered = false;
 
 		try {
-			int resultSetNumber = selectStockCompanies.selecFromCompanyName(companyName).size();
+			int resultSetNumber = selectStockCompanies.selectCountFromCompanyName(companyName);
 
 			if (resultSetNumber > 0) {
 				alreadyRegistered = true;

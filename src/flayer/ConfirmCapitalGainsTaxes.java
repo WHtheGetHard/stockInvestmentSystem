@@ -3,7 +3,6 @@ package flayer;
 import java.sql.SQLException;
 
 import dlayer.SelectCapitalGainsTaxes;
-import fieldformat.CapitalGainsTaxes;
 
 public class ConfirmCapitalGainsTaxes {
 	SelectCapitalGainsTaxes selectCapitalGainsTaxes = new SelectCapitalGainsTaxes();
@@ -11,11 +10,10 @@ public class ConfirmCapitalGainsTaxes {
 	public boolean confirmExists(String startDay, String endDay) {
 		boolean alreadyRegistered = false;
 
-		CapitalGainsTaxes capitalGainsTaxes = new CapitalGainsTaxes();
 		try {
-			capitalGainsTaxes = selectCapitalGainsTaxes.selectFromPrimaryKey(startDay, endDay);
+			int primaryKeyDuplicateNumber = selectCapitalGainsTaxes.selectCountFromPrimaryKey(startDay, endDay);
 
-			if (capitalGainsTaxes.getTaxRate() != null) {
+			if (primaryKeyDuplicateNumber > 0) {
 				alreadyRegistered = true;
 			} else {
 				alreadyRegistered = false;
@@ -29,14 +27,13 @@ public class ConfirmCapitalGainsTaxes {
 		return alreadyRegistered;
 	}
 
-	public boolean confirmOverlap(String day) {
+	public boolean confirmOverlap(String startDay, String endDay) {
 		boolean isOverlaped = false;
 
-		CapitalGainsTaxes capitalGainsTaxes = new CapitalGainsTaxes();
 		try {
-			capitalGainsTaxes = selectCapitalGainsTaxes.selectFromBetween(day);
+			int termOverLapNumber = selectCapitalGainsTaxes.selectCountTermOverLap(startDay, endDay);
 
-			if (capitalGainsTaxes.getTaxRate() != null) {
+			if (termOverLapNumber > 0) {
 				isOverlaped = true;
 			} else {
 				isOverlaped = false;

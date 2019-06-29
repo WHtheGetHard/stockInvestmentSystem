@@ -3,7 +3,6 @@ package flayer;
 import java.sql.SQLException;
 
 import dlayer.SelectConsumptionTaxes;
-import fieldformat.ConsumptionTaxes;
 
 public class ConfirmConsumptionTaxes {
 	SelectConsumptionTaxes selectConsumptionTaxes = new SelectConsumptionTaxes();
@@ -11,12 +10,10 @@ public class ConfirmConsumptionTaxes {
 	public boolean confirmExists(String startDay, String endDay) {
 		boolean alreadyRegistered = false;
 
-		ConsumptionTaxes consumptionTaxes = new ConsumptionTaxes();
-
 		try {
-			consumptionTaxes = selectConsumptionTaxes.selectFromPrimaryKey(startDay, endDay);
+			int primaryKeyDuplicateNumber = selectConsumptionTaxes.selectCountFromPrimaryKey(startDay, endDay);
 
-			if (consumptionTaxes.getTaxRate() != null) {
+			if (primaryKeyDuplicateNumber > 0) {
 				alreadyRegistered = true;
 			} else {
 				alreadyRegistered = false;
@@ -30,15 +27,13 @@ public class ConfirmConsumptionTaxes {
 		return alreadyRegistered;
 	}
 
-	public boolean confirmOverlap(String day) {
+	public boolean confirmOverlap(String startDay, String endDay) {
 		boolean isOverlaped = false;
 
-		ConsumptionTaxes consumptionTaxes = new ConsumptionTaxes();
-
 		try {
-			consumptionTaxes = selectConsumptionTaxes.selectFromBetween(day);
+			int termOverLapNumber = selectConsumptionTaxes.selectCountTermOverLap(startDay, endDay);
 
-			if (consumptionTaxes.getTaxRate() != null) {
+			if (termOverLapNumber > 0) {
 				isOverlaped = true;
 			} else {
 				isOverlaped = false;
