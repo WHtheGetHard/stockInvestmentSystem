@@ -150,21 +150,29 @@ public class TestSelectBrokerageCommissions {
 
 
 		// -----------------selectCountTermOverLap()の確認-----------------
-//		int campanyId = 5;
-//		String startDay = "2019/06/26";
-//		String endDay = "2019/06/30";
+//		int campanyId = 1;
+//		String startDay = "2018/03/31";
+//		String endDay = "2019/04/01";
 
-//		int campanyId = 5;
-//		String startDay = "2019/06/27";
-//		String endDay = "2019/06/30";
-//
-//		int campanyId = 5;
-//		String startDay = "2019/06/26";
-//		String endDay = "2019/06/29";
-//
-		int campanyId = 5;
-		String startDay = "2019/07/01";
-		String endDay = "2019/07/31";
+//		int campanyId = 1;
+//		String startDay = "2018/04/02";
+//		String endDay = "2019/03/30";
+
+//		int campanyId = 1;
+//		String startDay = "2018/03/31";
+//		String endDay = "2018/06/30";
+
+//		int campanyId = 1;
+//		String startDay = "2018/06/30";
+//		String endDay = "2019/04/01";
+
+//		int campanyId = 1;
+//		String startDay = "2018/01/01";
+//		String endDay = "2018/03/31";
+
+		int campanyId = 1;
+		String startDay = "2019/04/01";
+		String endDay = "2019/04/02";
 
 		try {
 			System.out.println("期間の重複件数 : " + selectBrokerageCommissions.selectCountTermOverLap(campanyId, startDay, endDay));

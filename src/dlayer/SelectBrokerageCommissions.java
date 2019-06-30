@@ -174,9 +174,10 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectCount + "campany_id = ? AND start_day <= ? AND end_day >= ?";
+		int countInclose = 0;
+		String sqlInclose = selectCount + "campany_id = ? AND ? <= start_day AND end_day <= ?";
 
-		PreparedStatement psttmt = conn.prepareStatement(sql);
+		PreparedStatement psttmt = conn.prepareStatement(sqlInclose);
 		psttmt.setInt(1, campanyId);
 		psttmt.setString(2, startDay);
 		psttmt.setString(3, endDay);
@@ -184,12 +185,29 @@ public class SelectBrokerageCommissions {
 		ResultSet rs = psttmt.executeQuery();
 
 		while (rs.next()) {
-			count = rs.getInt("count(campany_id)");
+			countInclose = rs.getInt("count(campany_id)");
+		}
+
+
+		int countInclude = 0;
+		String sqlInclude = selectCount + "campany_id = ? AND ((? BETWEEN start_day AND end_day) OR (? BETWEEN start_day AND end_day))";
+
+		psttmt = conn.prepareStatement(sqlInclude);
+		psttmt.setInt(1, campanyId);
+		psttmt.setString(2, startDay);
+		psttmt.setString(3, endDay);
+
+		rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			countInclude = rs.getInt("count(campany_id)");
 		}
 
 		rs.close();
 		psttmt.close();
 		conn.close();
+
+		count = countInclose + countInclude;
 
 		return count;
 	}

@@ -125,6 +125,10 @@ public class SelectConsumptionTaxes {
 			countInclude = rs.getInt("count(tax_rate)");
 		}
 
+		rs.close();
+		psttmt.close();
+		conn.close();
+
 		count = countInclose + countInclude;
 		return count;
 	}
