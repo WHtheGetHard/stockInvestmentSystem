@@ -99,22 +99,33 @@ public class SelectConsumptionTaxes {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectCount + "WHERE start_day <= ? AND end_day >= ?";
+		int countInclose = 0;
+		String sqlInclose = selectCount + "WHERE ? <= start_day AND end_day <= ?";
 
-		PreparedStatement psttmt = conn.prepareStatement(sql);
+		PreparedStatement psttmt = conn.prepareStatement(sqlInclose);
 		psttmt.setString(1, startDay);
 		psttmt.setString(2, endDay);
 
 		ResultSet rs = psttmt.executeQuery();
 
 		while (rs.next()) {
-			count = rs.getInt("count(tax_rate)");
+			countInclose = rs.getInt("count(tax_rate)");
 		}
 
-		rs.close();
-		psttmt.close();
-		conn.close();
+		int countInclude = 0;
+		String sqlInclude = selectCount + "WHERE (? BETWEEN start_day AND end_day) OR (? BETWEEN start_day AND end_day)";
 
+		psttmt = conn.prepareStatement(sqlInclude);
+		psttmt.setString(1, startDay);
+		psttmt.setString(2, endDay);
+
+		rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			countInclude = rs.getInt("count(tax_rate)");
+		}
+
+		count = countInclose + countInclude;
 		return count;
 	}
 }
