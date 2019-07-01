@@ -19,10 +19,10 @@ public class InsertBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = "INSERT INTO brokerage_commissions (`campany_id`, `brokerage_commission`, `start_day`, `end_day`) VALUE (?, ?, ?, ?)";
+		String sql = "INSERT INTO brokerage_commissions (`company_id`, `brokerage_commission`, `start_day`, `end_day`) VALUE (?, ?, ?, ?)";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
-		psttmt.setInt(1, brokerageCommissions.getCampanyId());
+		psttmt.setInt(1, brokerageCommissions.getCompanyId());
 		psttmt.setString(2, brokerageCommissions.getBrokerageCommission());
 		psttmt.setString(3, brokerageCommissions.getStartDay());
 		psttmt.setString(4, brokerageCommissions.getEndDay());

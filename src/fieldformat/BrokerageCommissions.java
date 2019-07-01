@@ -1,7 +1,7 @@
 package fieldformat;
 
 public class BrokerageCommissions {
-	private int campanyId;
+	private int companyId;
 
 	private String brokerageCommission;
 
@@ -9,12 +9,12 @@ public class BrokerageCommissions {
 
 	private String endDay;
 
-	public int getCampanyId() {
-		return campanyId;
+	public int getCompanyId() {
+		return companyId;
 	}
 
-	public void setCampanyId(int campanyId) {
-		this.campanyId = campanyId;
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
 
 	public String getBrokerageCommission() {
