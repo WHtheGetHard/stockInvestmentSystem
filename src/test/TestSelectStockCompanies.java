@@ -54,14 +54,27 @@ public class TestSelectStockCompanies {
 //			String companyName = "";
 //			String companyName = "大塚";
 //			String companyName = null;
-			String companyName = "重複";
-
-			int count = selectStockCompanies.selectCountFromCompanyName(companyName);
-
-			System.out.println(count);
+//			String companyName = "重複";
+//
+//			int count = selectStockCompanies.selectCountFromCompanyName(companyName);
+//
+//			System.out.println(count);
 
 
 			// --------------------selectCountFromCompanyNameメソッドの確認--------------------
+
+			// -------------------selectMaxIdFromCompanyNameメソッドの確認-------------------
+//			String companyName = "楽天"; //1
+//			String companyName = "野村";   //2
+//			String companyName = ""; //0
+//			String companyName = "大塚"; //0
+//			String companyName = null; //0
+			String companyName = "重複"; //4
+
+			int maxId = selectStockCompanies.selectMaxIdFromCompanyName(companyName);
+
+			System.out.println("最大値 : " + maxId);
+			// -------------------selectMaxIdFromCompanyNameメソッドの確認-------------------
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();

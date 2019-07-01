@@ -68,6 +68,29 @@ public class SelectStockCompanies {
 		return stockCompanies;
 	}
 
+	public int selectMaxIdFromCompanyName(String companyName) throws SQLException {
+		int maxId = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = "SELECT max(id) FROM stock_companies WHERE company_name = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, companyName);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			maxId = rs.getInt("max(id)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return maxId;
+	}
+
 	public int selectCountFromCompanyName(String companyName) throws SQLException {
 		int count = 0;
 
