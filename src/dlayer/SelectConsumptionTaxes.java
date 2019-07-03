@@ -49,11 +49,10 @@ public class SelectConsumptionTaxes {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE start_day < ? AND end_day > ?";
+		String sql = selectAll + "WHERE ? BETWEEN start_day AND end_day";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
 		psttmt.setString(1, day);
-		psttmt.setString(2, day);
 
 		ResultSet rs = psttmt.executeQuery();
 
