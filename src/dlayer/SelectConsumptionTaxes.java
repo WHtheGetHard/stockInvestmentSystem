@@ -99,7 +99,7 @@ public class SelectConsumptionTaxes {
 		Connection conn = DriverManager.getConnection(url, user, password);
 
 		int countInclose = 0;
-		String sqlInclose = selectCount + "WHERE ? <= start_day AND end_day <= ?";
+		String sqlInclose = selectCount + "WHERE ? < start_day AND end_day < ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sqlInclose);
 		psttmt.setString(1, startDay);
