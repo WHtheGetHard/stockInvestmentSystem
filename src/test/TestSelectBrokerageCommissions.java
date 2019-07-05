@@ -154,9 +154,9 @@ public class TestSelectBrokerageCommissions {
 
 		// START----------- comfirm selectCountTermOverlapFromPrimaryKey(int companyId, String startDay, String endDay) method -----------START
 		// count number is 1
-		int companyId = 10;
-		String startDay = "2000/04/01";
-		String endDay = "2001/03/31";
+//		int companyId = 10;
+//		String startDay = "2000/04/01";
+//		String endDay = "2001/03/31";
 
 		// count number is 0
 //		int companyId = 9;
@@ -203,19 +203,59 @@ public class TestSelectBrokerageCommissions {
 //		String startDay = "2000/03/31";
 //		String endDay = "2001/04/01";
 
-		int countNumber = 0;
+//		int countNumber = 0;
+//		try {
+//			countNumber = selectBrokerageCommissions.selectCountTermOverlapFromPrimaryKey(companyId, startDay, endDay);
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+//
+//		System.out.println("count number is : " + countNumber);
+		// END----------- comfirm selectCountTermOverlapFromPrimaryKey(int companyId, String startDay, String endDay) method -----------END
+
+
+		// START----------- comfirm selectFromValidTerm(int companyId, String day) method -----------START
+		// brokerage commission is 10000
+//		int companyId = 10;
+//		String day = "2002/04/01";
+
+		// brokerage commission is null
+//		int companyId = 9;
+//		String day = "2002/04/01";
+
+		// brokerage commission is null
+//		int companyId = 10;
+//		String day = "2002/03/31";
+
+		// brokerage commission is 10000
+//		int companyId = 10;
+//		String day = "2002/04/02";
+
+		// brokerage commission is 10000
+//		int companyId = 10;
+//		String day = "2002/06/31";
+
+		// brokerage commission is 10000
+//		int companyId = 10;
+//		String day = "2003/03/30";
+
+		// brokerage commission is 10000
+//		int companyId = 10;
+//		String day = "2003/03/31";
+
+		// brokerage commission is null
+		int companyId = 10;
+		String day = "2003/04/01";
+
 		try {
-			countNumber = selectBrokerageCommissions.selectCountTermOverlapFromPrimaryKey(companyId, startDay, endDay);
+			brokerageCommissions = selectBrokerageCommissions.selectFromValidTerm(companyId, day);
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 
-		System.out.println("count number is : " + countNumber);
-		// END----------- comfirm selectCountTermOverlapFromPrimaryKey(int companyId, String startDay, String endDay) method -----------END
-
-
-		// START----------- comfirm selectFromValidTerm(int companyId, String day) method -----------START
+		System.out.println("brokerage commission is : " + brokerageCommissions.getBrokerageCommission());
 		// END----------- comfirm selectFromValidTerm(int companyId, String day) method -----------END
 
 	}
