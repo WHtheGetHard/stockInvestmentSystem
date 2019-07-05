@@ -118,7 +118,7 @@ public class SelectBrokerageCommissions {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sqlInclose = selectCount + "WHERE campany_id = ? AND ? < start_day AND end_day < ?";
+		String sqlInclose = selectCount + "WHERE company_id = ? AND ? < start_day AND end_day < ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sqlInclose);
 		psttmt.setInt(1, companyId);
@@ -132,7 +132,7 @@ public class SelectBrokerageCommissions {
 		}
 
 
-		String sqlInclude = selectCount + "WHERE campany_id = ? AND ((? BETWEEN start_day AND end_day) OR (? BETWEEN start_day AND end_day))";
+		String sqlInclude = selectCount + "WHERE company_id = ? AND ((? BETWEEN start_day AND end_day) OR (? BETWEEN start_day AND end_day))";
 
 		psttmt = conn.prepareStatement(sqlInclude);
 		psttmt.setInt(1, companyId);
