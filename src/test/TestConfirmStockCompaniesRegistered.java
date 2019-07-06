@@ -6,7 +6,7 @@ public class TestConfirmStockCompaniesRegistered {
 	public static void main(String[] args) {
 		ConfirmStockCompaniesRegistered confirmStockCompaniesRegistered = new ConfirmStockCompaniesRegistered();
 
-		// START----------confrim selectCountFromCompanyName(String companyName) method ----------START
+		// START----------confrim isRegistered(companyName) method ----------START
 //		String companyName = ""; // false
 //		String companyName = null; // false
 //		String companyName = "ABC inc."; // true
@@ -14,6 +14,6 @@ public class TestConfirmStockCompaniesRegistered {
 		String companyName = "ABC co."; // false
 
 		System.out.println("already registered : " + confirmStockCompaniesRegistered.isRegistered(companyName));
-		// END----------confrim selectCountFromCompanyName(String companyName) method ----------END
+		// END----------confrim isRegistered(companyName) method ----------END
 	}
 }
