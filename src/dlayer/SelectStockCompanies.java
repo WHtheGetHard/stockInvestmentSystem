@@ -40,6 +40,29 @@ public class SelectStockCompanies {
 		return stockCompanies;
 	}
 
+	public int selectIdFromCompanyName(String companyName) throws SQLException {
+		int companyId = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectAll + "WHERE company_name = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, companyName);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			companyId = rs.getInt("id");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return companyId;
+	}
+
 	public int selectCountFromCompanyName(String companyName) throws SQLException {
 		int count = 0;
 
