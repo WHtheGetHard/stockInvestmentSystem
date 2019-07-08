@@ -2,18 +2,18 @@ package flayer;
 
 import java.sql.SQLException;
 
-import dlayer.SelectBrokerageCommissions;
+import dlayer.SelectConsumptionTaxes;
 
-public class ConfirmSelectBrokerageCommissionsRegistered {
-	SelectBrokerageCommissions selectBrokerageCommissions = new SelectBrokerageCommissions();
+public class ConfirmConsumptionTaxesRegistered {
+	SelectConsumptionTaxes selectConsumptionTaxes = new SelectConsumptionTaxes();
 
-	public boolean isDuplicatePrimaryKey(int companyId, String startDay, String endDay) {
+	public boolean isDuplicatePrimaryKey(String startDay, String endDay) {
 		boolean isDuplicated = false;
 
 		int countNumber = 0;
 
 		try {
-			countNumber = selectBrokerageCommissions.selectCountFromPrimaryKey(companyId, startDay, endDay);
+			countNumber = selectConsumptionTaxes.selectCountFromPrimaryKey(startDay, endDay);
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
@@ -28,13 +28,14 @@ public class ConfirmSelectBrokerageCommissionsRegistered {
 		return isDuplicated;
 	}
 
-	public boolean isOverlap(int companyId, String startDay, String endDay) {
+
+	public boolean isOverlap(String startDay, String endDay) {
 		boolean isOverlaped = false;
 
 		int countNumber = 0;
 
 		try {
-			countNumber = selectBrokerageCommissions.selectCountTermOverlapFromPrimaryKey(companyId, startDay, endDay);
+			countNumber = selectConsumptionTaxes.selectCountTermOverLap(startDay, endDay);
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();

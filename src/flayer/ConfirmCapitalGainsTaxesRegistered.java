@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import dlayer.SelectCapitalGainsTaxes;
 
-public class ConfirmSelectCapitalGainsTaxesRegistered {
+public class ConfirmCapitalGainsTaxesRegistered {
 	SelectCapitalGainsTaxes selectCapitalGainsTaxes = new SelectCapitalGainsTaxes();
 
 	public boolean isDuplicatePrimaryKey(String startDay, String endDay) {

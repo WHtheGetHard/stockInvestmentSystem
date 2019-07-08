@@ -1,10 +1,10 @@
 package test;
 
-import flayer.ConfirmSelectBrokerageCommissionsRegistered;
+import flayer.ConfirmBrokerageCommissionsRegistered;
 
 public class TestConfirmSelectBrokerageCommissionsRegistered {
 	public static void main(String[] args) {
-		ConfirmSelectBrokerageCommissionsRegistered confirmSelectBrokerageCommissionsRegistered = new ConfirmSelectBrokerageCommissionsRegistered();
+		ConfirmBrokerageCommissionsRegistered confirmSelectBrokerageCommissionsRegistered = new ConfirmBrokerageCommissionsRegistered();
 		// START----------- comfirm isDuplicatePrimaryKey(companyId, startDay, endDay) method -----------START
 		// true
 //		int companyId = 10;

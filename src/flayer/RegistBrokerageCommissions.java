@@ -22,7 +22,7 @@ public class RegistBrokerageCommissions {
 
 		// TODO : confirm stock company is already registered
 		ConfirmStockCompaniesRegistered confirmStockCompaniesRegistered = new ConfirmStockCompaniesRegistered();
-		ConfirmSelectBrokerageCommissionsRegistered confirmSelectBrokerageCommissionsRegistered = new ConfirmSelectBrokerageCommissionsRegistered();
+		ConfirmBrokerageCommissionsRegistered confirmSelectBrokerageCommissionsRegistered = new ConfirmBrokerageCommissionsRegistered();
 
 		boolean companyIsExist = confirmStockCompaniesRegistered.isRegistered(displayContentsBrokerageCommissions.getCompanyName());
 

@@ -1,10 +1,10 @@
 package test;
 
-import flayer.ConfirmSelectCapitalGainsTaxesRegistered;
+import flayer.ConfirmCapitalGainsTaxesRegistered;
 
 public class TestConfirmSelectCapitalGainsTaxesRegistered {
 	public static void main(String[] args) {
-		ConfirmSelectCapitalGainsTaxesRegistered confirmSelectCapitalGainsTaxesRegistered = new ConfirmSelectCapitalGainsTaxesRegistered();
+		ConfirmCapitalGainsTaxesRegistered confirmSelectCapitalGainsTaxesRegistered = new ConfirmCapitalGainsTaxesRegistered();
 
 		// START----------- comfirm isDuplicatePrimaryKey(startDay, endDay) method -----------START
 		// true
