@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="./common.jsp" %>
 	<article>
-		メイン
+
 	</article>
 </body>
 </html>
