@@ -46,7 +46,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 						<td>適用終了日</td>
 
 						<td>
-							<input type="text" name="startDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
+							<input type="text" name="endDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
 						</td>
 					</tr>
 				</table>
@@ -81,7 +81,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 						<td>適用終了日</td>
 
 						<td>
-							<input type="text" name="startDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
+							<input type="text" name="endDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
 						</td>
 					</tr>
 				</table>
@@ -115,7 +115,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 						<td>適用終了日</td>
 
 						<td>
-							<input type="text" name="startDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
+							<input type="text" name="endDate" autocomplete="off" data-type="yyyymmdd" title="適用終了日">
 						</td>
 					</tr>
 				</table>
