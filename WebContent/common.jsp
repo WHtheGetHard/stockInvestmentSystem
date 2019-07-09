@@ -6,7 +6,9 @@
 
 		<nav>
 			<ul class="parents">
-				<li class="parents" data-contents="home">ホーム</li>
+				<li class="parents" data-contents="home">
+					<a href="./home.jsp">ホーム</a>
+				</li>
 
 				<li class="parents" data-contents="basic-knowledge">
 					基礎知識
