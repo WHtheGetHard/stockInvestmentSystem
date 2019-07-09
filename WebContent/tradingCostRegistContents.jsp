@@ -51,6 +51,8 @@ if (registTradingCostTypeSelectCheckResult != null) {
 					</tr>
 				</table>
 
+				<input type="hidden" name="tradingCostType" value="1">
+
 				<input type="submit" value="登録" class="regist" disabled>
 			</form>
 
@@ -86,6 +88,8 @@ if (registTradingCostTypeSelectCheckResult != null) {
 					</tr>
 				</table>
 
+				<input type="hidden" name="tradingCostType" value="2">
+
 				<input type="submit" value="登録" class="regist" disabled>
 			</form>
 <%
@@ -119,6 +123,8 @@ if (registTradingCostTypeSelectCheckResult != null) {
 						</td>
 					</tr>
 				</table>
+
+				<input type="hidden" name="tradingCostType" value="3">
 
 				<input type="submit" value="登録" class="regist" disabled>
 			</form>
