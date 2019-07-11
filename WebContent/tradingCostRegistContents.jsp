@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="fieldformat.RegistTradingCostTypeSelectCheckResult" %>
+<%@ page import="fieldformat.TradingCostTypeSelectCheckResult" %>
 
 <%
-RegistTradingCostTypeSelectCheckResult registTradingCostTypeSelectCheckResult
-	= new RegistTradingCostTypeSelectCheckResult();
+TradingCostTypeSelectCheckResult tradingCostTypeSelectCheckResult
+	= new TradingCostTypeSelectCheckResult();
 
-registTradingCostTypeSelectCheckResult
-	= (RegistTradingCostTypeSelectCheckResult) request.getAttribute("registTradingCostTypeSelectCheckResult");
+tradingCostTypeSelectCheckResult
+	= (TradingCostTypeSelectCheckResult) request.getAttribute("tradingCostTypeSelectCheckResult");
 
-if (registTradingCostTypeSelectCheckResult != null) {
-	if (registTradingCostTypeSelectCheckResult.isValidValue()) {
-		if ("1".equals(registTradingCostTypeSelectCheckResult.getTradingCostType())) {
+if (tradingCostTypeSelectCheckResult != null) {
+	if (tradingCostTypeSelectCheckResult.isValidValue()) {
+		if ("1".equals(tradingCostTypeSelectCheckResult.getTradingCostType())) {
 %>
 			<h2>売買委託手数料情報の登録</h2>
 
@@ -57,7 +57,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 			</form>
 
 <%
-		} else if ("2".equals(registTradingCostTypeSelectCheckResult.getTradingCostType())) {
+		} else if ("2".equals(tradingCostTypeSelectCheckResult.getTradingCostType())) {
 %>
 			<h2>キャピタルゲイン課税情報の登録</h2>
 
@@ -93,7 +93,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 				<input type="submit" value="登録" class="regist" disabled>
 			</form>
 <%
-		} else if ("3".equals(registTradingCostTypeSelectCheckResult.getTradingCostType())) {
+		} else if ("3".equals(tradingCostTypeSelectCheckResult.getTradingCostType())) {
 %>
 			<h2>消費税の登録</h2>
 
@@ -132,7 +132,7 @@ if (registTradingCostTypeSelectCheckResult != null) {
 		}
 	} else {
 %>
-		<%= registTradingCostTypeSelectCheckResult.getErrorMessage()%>
+		<%= tradingCostTypeSelectCheckResult.getErrorMessage()%>
 <%
 	}
 }
