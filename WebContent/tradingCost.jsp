@@ -14,13 +14,14 @@
 <body>
 	<%@ include file="./common.jsp" %>
 	<article>
-		<form action="RegistTradingCostTypeSelect" method="post">
+		<form action="TradingCostTypeSelect" method="post">
 			<select name="tradingCostType">
 				<option value="1">売買委託手数料</option>
 				<option value="2">キャピタルゲイン課税</option>
 				<option value="3">消費税</option>
 			</select>
 
+			<input type="hidden" name="caller" value="regist">
 			<input type="submit" value="選択">
 		</form>
 
