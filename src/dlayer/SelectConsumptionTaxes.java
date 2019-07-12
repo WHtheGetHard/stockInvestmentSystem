@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import fieldformat.ConsumptionTaxes;
 
@@ -130,5 +131,33 @@ public class SelectConsumptionTaxes {
 
 		count = countInclose + countInclude;
 		return count;
+	}
+
+	public ArrayList<ConsumptionTaxes> selectAllRecord() throws SQLException {
+		ArrayList<ConsumptionTaxes> consumptionTaxesList = new ArrayList<ConsumptionTaxes>();
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectAll;
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			ConsumptionTaxes consumptionTaxes = new ConsumptionTaxes();
+
+			consumptionTaxes.setTaxRate(rs.getString("tax_rate"));
+			consumptionTaxes.setStartDay(rs.getString("start_day"));
+			consumptionTaxes.setEndDay(rs.getString("end_day"));
+
+			consumptionTaxesList.add(consumptionTaxes);
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return consumptionTaxesList;
 	}
 }

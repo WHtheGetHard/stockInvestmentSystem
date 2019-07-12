@@ -183,4 +183,33 @@ public class SelectBrokerageCommissions {
 
 		return brokerageCommissions;
 	}
+
+	public ArrayList<BrokerageCommissions> selectAllRecord() throws SQLException {
+		ArrayList<BrokerageCommissions> brokerageCommissionsList = new ArrayList<BrokerageCommissions>();
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectAll;
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			BrokerageCommissions brokerageCommissions = new BrokerageCommissions();
+
+			brokerageCommissions.setCompanyId(rs.getInt("company_id"));
+			brokerageCommissions.setBrokerageCommission(rs.getString("brokerage_commission"));
+			brokerageCommissions.setStartDay(rs.getString("start_day"));
+			brokerageCommissions.setEndDay(rs.getString("end_day"));
+
+			brokerageCommissionsList.add(brokerageCommissions);
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return brokerageCommissionsList;
+	}
 }

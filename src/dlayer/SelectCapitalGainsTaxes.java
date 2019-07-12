@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import fieldformat.CapitalGainsTaxes;
 
@@ -135,5 +136,33 @@ public class SelectCapitalGainsTaxes {
 		count = countInclose + countInclude;
 
 		return count;
+	}
+
+	public ArrayList<CapitalGainsTaxes> selectAllRecord() throws SQLException {
+		ArrayList<CapitalGainsTaxes> capitalGainsTaxesList = new ArrayList<CapitalGainsTaxes>();
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectAll;
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			CapitalGainsTaxes capitalGainsTaxes = new CapitalGainsTaxes();
+
+			capitalGainsTaxes.setTaxRate(rs.getString("tax_rate"));
+			capitalGainsTaxes.setStartDay(rs.getString("start_day"));
+			capitalGainsTaxes.setEndDay(rs.getString("end_day"));
+
+			capitalGainsTaxesList.add(capitalGainsTaxes);
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return capitalGainsTaxesList;
 	}
 }
