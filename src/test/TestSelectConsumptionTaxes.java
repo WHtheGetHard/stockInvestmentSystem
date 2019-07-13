@@ -1,5 +1,8 @@
 package test;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import dlayer.SelectConsumptionTaxes;
 import fieldformat.ConsumptionTaxes;
 
@@ -11,7 +14,7 @@ public class TestSelectConsumptionTaxes {
 
 		SelectConsumptionTaxes selectConsumptionTaxes = new SelectConsumptionTaxes();
 		ConsumptionTaxes consumptionTaxes = new ConsumptionTaxes();
-
+		ArrayList<ConsumptionTaxes> consumptionTaxesList = new ArrayList<ConsumptionTaxes>();
 
 		// START----------- comfirm selectFromPrimaryKey(String startDay, String endDay) method -----------START
 		// tax_rate is 0.3
@@ -165,5 +168,18 @@ public class TestSelectConsumptionTaxes {
 //		}
 
 		// END----------- confirm selectCountTermOverLap(String startDay, String endDay) method -----------END
+
+
+		// START----------- confirm selectAllRecord() method -----------START
+		try {
+			consumptionTaxesList = selectConsumptionTaxes.selectAllRecord();
+			for (int i = 0; i < consumptionTaxesList.size(); i++) {
+				System.out.println(consumptionTaxesList.get(i).getTaxRate() );
+			}
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		// END----------- confirm selectAllRecord() method -----------END
 	}
 }

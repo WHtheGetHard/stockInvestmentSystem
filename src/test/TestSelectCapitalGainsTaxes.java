@@ -1,5 +1,8 @@
 package test;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import dlayer.SelectCapitalGainsTaxes;
 import fieldformat.CapitalGainsTaxes;
 
@@ -11,6 +14,7 @@ public class TestSelectCapitalGainsTaxes {
 
 		SelectCapitalGainsTaxes selectCapitalGainsTaxes = new SelectCapitalGainsTaxes();
 		CapitalGainsTaxes capitalGainsTaxes = new CapitalGainsTaxes();
+		ArrayList<CapitalGainsTaxes> capitalGainsTaxesList = new ArrayList<CapitalGainsTaxes>();
 
 
 		// START----------- comfirm selectFromPrimaryKey(String startDay, String endDay) method -----------START
@@ -165,5 +169,19 @@ public class TestSelectCapitalGainsTaxes {
 //		}
 
 		// END----------- confirm selectCountTermOverLap(String startDay, String endDay) method -----------END
+
+
+		// START----------- comfirm selectAllRecord() method -----------START
+
+		try {
+			capitalGainsTaxesList = selectCapitalGainsTaxes.selectAllRecord();
+			for (int i = 0; i < capitalGainsTaxesList.size(); i++) {
+				System.out.println(capitalGainsTaxesList.get(i).getTaxRate());
+			}
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		// END----------- comfirm selectAllRecord() method -----------END
 	}
 }

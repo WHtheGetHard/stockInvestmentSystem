@@ -245,18 +245,32 @@ public class TestSelectBrokerageCommissions {
 //		String day = "2003/03/31";
 
 		// brokerage commission is null
-		int companyId = 10;
-		String day = "2003/04/01";
+//		int companyId = 10;
+//		String day = "2003/04/01";
+//
+//		try {
+//			brokerageCommissions = selectBrokerageCommissions.selectFromValidTerm(companyId, day);
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+//
+//		System.out.println("brokerage commission is : " + brokerageCommissions.getBrokerageCommission());
+		// END----------- comfirm selectFromValidTerm(int companyId, String day) method -----------END
 
+
+		// START----------- comfirm selectAllRecord() method -----------START
 		try {
-			brokerageCommissions = selectBrokerageCommissions.selectFromValidTerm(companyId, day);
+			brokerageCommissionsList = selectBrokerageCommissions.selectAllRecord();
+			for (int i = 0; i < brokerageCommissionsList.size(); i++) {
+				System.out.println(brokerageCommissionsList.get(i).getBrokerageCommission());
+			}
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+		// END----------- comfirm selectAllRecord() method -----------END
 
-		System.out.println("brokerage commission is : " + brokerageCommissions.getBrokerageCommission());
-		// END----------- comfirm selectFromValidTerm(int companyId, String day) method -----------END
 
 	}
 }
