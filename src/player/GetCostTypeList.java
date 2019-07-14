@@ -41,6 +41,7 @@ public class GetCostTypeList extends HttpServlet {
 
 		TradingCostTypeSelectCheckResult tradingCostTypeSelectCheckResult = new TradingCostTypeSelectCheckResult();
 		tradingCostTypeSelectCheckResult.setTradingCostType(tradingCostType);
+		tradingCostTypeSelectCheckResult.setValidValue(true);
 
 		if ("1".equals(tradingCostType)) {
 			ExecSelectAllRecordBrokerageCommissions execSelectAllRecordBrokerageCommissions= new ExecSelectAllRecordBrokerageCommissions();
