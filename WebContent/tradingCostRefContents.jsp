@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="fieldformat.TradingCostTypeSelectCheckResult" %>
+<%@ page import="fieldformat.BrokerageCommissions" %>
+<%@ page import="fieldformat.CapitalGainsTaxes" %>
+<%@ page import="fieldformat.ConsumptionTaxes" %>
+<%@ page import="java.util.ArrayList" %>
 
 <%
 TradingCostTypeSelectCheckResult tradingCostTypeSelectCheckResult
@@ -25,8 +29,15 @@ if (tradingCostTypeSelectCheckResult != null) {
 				<input type="hidden" name="tradingCostType" value="1">
 				<input type="submit" value="検索">
 			</form>
-
 <%
+			ArrayList<BrokerageCommissions> brokerageCommissionsList = new ArrayList<BrokerageCommissions>();
+
+			brokerageCommissionsList = (ArrayList<BrokerageCommissions>) request.getAttribute("brokerageCommissionsList");
+
+			if (brokerageCommissionsList != null) {
+
+			}
+
 		} else if ("2".equals(tradingCostTypeSelectCheckResult.getTradingCostType())) {
 %>
 			<h2>キャピタルゲイン課税情報の確認</h2>
