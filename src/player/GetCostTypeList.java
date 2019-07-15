@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fieldformat.BrokerageCommissions;
 import fieldformat.CapitalGainsTaxes;
 import fieldformat.ConsumptionTaxes;
+import fieldformat.DisplayContentsBrokerageCommissions;
 import fieldformat.TradingCostTypeSelectCheckResult;
+import flayer.DisplayAllRecordBrokerageCommissions;
 import flayer.ExecSelectAllCapitalGainsTaxes;
 import flayer.ExecSelectAllConsumptionTaxes;
-import flayer.ExecSelectAllRecordBrokerageCommissions;
 
 /**
  * Servlet implementation class GetCostTypeList
@@ -44,13 +44,15 @@ public class GetCostTypeList extends HttpServlet {
 		tradingCostTypeSelectCheckResult.setValidValue(true);
 
 		if ("1".equals(tradingCostType)) {
-			ExecSelectAllRecordBrokerageCommissions execSelectAllRecordBrokerageCommissions= new ExecSelectAllRecordBrokerageCommissions();
-			ArrayList<BrokerageCommissions> brokerageCommissionsList = new ArrayList<BrokerageCommissions>();
+			DisplayAllRecordBrokerageCommissions displayAllRecordBrokerageCommissions = new DisplayAllRecordBrokerageCommissions();
 
-			brokerageCommissionsList = execSelectAllRecordBrokerageCommissions.exec();
+			ArrayList<DisplayContentsBrokerageCommissions> displayContentsBrokerageCommissionsList =
+					new ArrayList<DisplayContentsBrokerageCommissions>();
+
+			displayContentsBrokerageCommissionsList = displayAllRecordBrokerageCommissions.exec();
 
 			request.setAttribute("tradingCostTypeSelectCheckResult", tradingCostTypeSelectCheckResult);
-			request.setAttribute("brokerageCommissionsList", brokerageCommissionsList);
+			request.setAttribute("displayContentsBrokerageCommissionsList", displayContentsBrokerageCommissionsList);
 		} else if ("2".equals(tradingCostType)) {
 			ExecSelectAllCapitalGainsTaxes execSelectAllCapitalGainsTaxes = new ExecSelectAllCapitalGainsTaxes();
 			ArrayList<CapitalGainsTaxes> capitalGainsTaxesList = new ArrayList<CapitalGainsTaxes>();
