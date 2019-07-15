@@ -73,7 +73,36 @@ if (tradingCostTypeSelectCheckResult != null) {
 				<input type="hidden" name="tradingCostType" value="2">
 				<input type="submit" value="検索">
 			</form>
+
 <%
+			ArrayList<CapitalGainsTaxes> capitalGainsTaxesList = new ArrayList<CapitalGainsTaxes>();
+
+			capitalGainsTaxesList = (ArrayList<CapitalGainsTaxes>) request.getAttribute("capitalGainsTaxesList");
+
+			if (capitalGainsTaxesList != null) {
+%>
+				<table>
+					<tr>
+						<th>キャピタルゲイン課税</th>
+						<th>適用開始日</th>
+						<th>適用終了日</th>
+					</tr>
+<%
+				for (int i = 0; i < capitalGainsTaxesList.size(); i++) {
+%>
+					<tr>
+						<td><%= capitalGainsTaxesList.get(i).getTaxRate() %></td>
+						<td><%= capitalGainsTaxesList.get(i).getStartDay() %></td>
+						<td><%= capitalGainsTaxesList.get(i).getEndDay() %></td>
+					</tr>
+
+<%
+				}
+%>
+				</table>
+<%
+			}
+
 		} else if ("3".equals(tradingCostTypeSelectCheckResult.getTradingCostType())) {
 %>
 			<h2>消費税の確認</h2>
@@ -89,6 +118,32 @@ if (tradingCostTypeSelectCheckResult != null) {
 				<input type="submit" value="検索">
 			</form>
 <%
+			ArrayList<ConsumptionTaxes> consumptionTaxesList = new ArrayList<ConsumptionTaxes>();
+			consumptionTaxesList = (ArrayList<ConsumptionTaxes>) request.getAttribute("consumptionTaxesList");
+
+			if (consumptionTaxesList != null) {
+%>
+				<table>
+					<tr>
+						<th>消費税</th>
+						<th>適用開始日</th>
+						<th>適用終了日</th>
+					</tr>
+
+<%
+				for (int i = 0; i < consumptionTaxesList.size(); i++) {
+%>
+					<tr>
+						<td><%= consumptionTaxesList.get(i).getTaxRate() %></td>
+						<td><%= consumptionTaxesList.get(i).getStartDay() %></td>
+						<td><%= consumptionTaxesList.get(i).getEndDay() %></td>
+					</tr>
+<%
+				}
+%>
+				</table>
+<%
+			}
 		}
 	} else {
 %>
