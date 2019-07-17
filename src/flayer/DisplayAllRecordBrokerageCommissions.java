@@ -27,13 +27,15 @@ public class DisplayAllRecordBrokerageCommissions {
 		ArrayList<DisplayContentsBrokerageCommissions> displayContentsBrokerageCommissionsList =
 				new ArrayList<DisplayContentsBrokerageCommissions>();
 
+		CurrencyEdit currencyEdit = new CurrencyEdit();
+
 		if (brokerageCommissionsList != null) {
 			for (int i = 0; i < brokerageCommissionsList.size(); i++) {
 				DisplayContentsBrokerageCommissions displayContentsBrokerageCommissions = new DisplayContentsBrokerageCommissions();
 
 
 				displayContentsBrokerageCommissions.setBraokerageCommission(
-						brokerageCommissionsList.get(i).getBrokerageCommission());
+						currencyEdit.commaEdit(brokerageCommissionsList.get(i).getBrokerageCommission()));
 
 				displayContentsBrokerageCommissions.setStartDate(
 						brokerageCommissionsList.get(i).getStartDay());
