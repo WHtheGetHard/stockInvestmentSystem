@@ -13,7 +13,9 @@
 				<li class="parents" data-contents="basic-knowledge">
 					基礎知識
 					<ul class="child" data-contents="basic-knowledge" style="display: none">
-						<li class="child">株とは</li>
+						<li class="child">
+							<a href="./aboutStock.jsp">株とは</a>
+						</li>
 						<li class="child">専門用語</li>
 						<li class="child">企業分析指標</li>
 						<li class="child">経済分析指標</li>
