@@ -7,6 +7,7 @@
 
 	<link rel="shortcut icon" href="./img/common-icon.jpg">
 	<link rel="stylesheet" type="text/css" href="./css/common-style.css">
+	<link rel="stylesheet" type="text/css" href="./css/about-stock-style.css">
 
 	<title>株とは</title>
 </head>
@@ -22,30 +23,30 @@
 
 	<div>
 		<table>
-			<tr class="1">
+			<tr>
 				<th class="topic">株</th><th class="showbutton">⊕</th>
 			</tr>
-			<tr class="1">
-				<td colspan="2" class="description">
+			<tr>
+				<td colspan="2" class="description" data-isvisible="false" hidden>
 					株の発行は出資を募るための手段で、株式とは、株式会社における出資者の持ち分を明らかにする有価証券。<br>
 				</td>
 			</tr>
 
-			<tr class="2">
+			<tr>
 				<th class="topic">出資</th><th class="showbutton">⊕</th>
 			</tr>
-			<tr class="2">
-				<td colspan="2" class="description">
+			<tr>
+				<td colspan="2" class="description" data-isvisible="false" hidden>
 					会社に資金を提供し、その提供した金額に応じて会社の権利の一部を譲り受ける。この権利の証明書が株。<br>
 					銀行などから借りる「借入」とことなり、出資されたものに対しては返済が不要となる。
 				</td>
 			</tr>
 
-			<tr class="3">
+			<tr>
 				<th class="topic">上場</th><th class="showbutton">⊕</th>
 			</tr>
-			<tr class="3">
-				<td colspan="2" class="description">
+			<tr>
+				<td colspan="2" class="description" data-isvisible="false" hidden>
 					会社が資金を広く集めやすくするために、証券取引所という株などの有価証券を売買する施設を設けている。<br>
 					その証券取引所で株を売買可能にする行為を、上場という。
 				</td>
