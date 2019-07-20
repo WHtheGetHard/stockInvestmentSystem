@@ -1,0 +1,12 @@
+th {
+	background-color : #00FFFF;
+}
+
+th.topic {
+	width : 900px;
+	text-align : left;
+}
+
+th.showbutton {
+	width : 5px;
+}
