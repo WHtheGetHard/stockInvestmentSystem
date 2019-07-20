@@ -21,6 +21,20 @@
 		</article>
 	</div>
 
+	<div class="selectSection">
+		学習する章を選択してください。
+		<form action="SelectSection" method="post">
+			<select name="selectedSection">
+				<option value="1">1章</option>
+				<option value="2">2章</option>
+				<option value="3">3章</option>
+				<option value="4">4章</option>
+			</select>
+
+			<input type="submit" value="選択">
+		</form>
+	</div>
+
 	<div>
 		<table>
 			<tr>
