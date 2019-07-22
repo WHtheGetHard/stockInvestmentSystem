@@ -29,7 +29,9 @@
 						<li class="child">
 							<a href="./tradingCost.jsp">売買関連費用</a>
 						</li>
-						<li class="child">企業情報</li>
+						<li class="child">
+							<a href="./companyInfoRegist.jsp">企業情報</a>
+						</li>
 						<li class="child">保有株情報</li>
 					</ul>
 				</li>
