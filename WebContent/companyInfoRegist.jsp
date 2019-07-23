@@ -33,7 +33,7 @@
 
 <%
 	ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
-	companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) request.getAttribute("companyStockBaseInfoList");
+	companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) session.getAttribute("companyStockBaseInfoList");
 
 	if (companyStockBaseInfoList != null) {
 %>
@@ -59,7 +59,7 @@
 						<%= companyStockBaseInfoList.get(i).getMarket() %>
 					</td>
 					<td>
-						<input type="checkbox" name="companyStockBaseInfo" value="<%= i %>">
+						<input type="checkbox" name="listNumber" value="<%= i %>">
 					</td>
 				</tr>
 <%

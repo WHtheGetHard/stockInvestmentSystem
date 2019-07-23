@@ -3,7 +3,6 @@ package player;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
-import flayer.SecuritiesCode;
 
 /**
- * Servlet implementation class SearchCompanyName
+ * Servlet implementation class RegistCompanyBaseInfo
  */
-@WebServlet("/SearchCompanyName")
-public class SearchCompanyName extends HttpServlet {
+@WebServlet("/RegistCompanyBaseInfo")
+public class RegistCompanyBaseInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchCompanyName() {
+    public RegistCompanyBaseInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,21 +33,16 @@ public class SearchCompanyName extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-
-		String companyName = request.getParameter("companyName");
-
-		SecuritiesCode securitiesCode = new SecuritiesCode();
-		String article = securitiesCode.accessTargetPage(companyName);
+		HttpSession session = request.getSession();
 
 		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
-		companyStockBaseInfoList = securitiesCode.getResults(article);
+		companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) session.getAttribute("companyStockBaseInfoList");
 
-		HttpSession session = request.getSession();
-		session.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
+		int listNumber = Integer.parseInt(request.getParameter("listNumber"));
 
-		RequestDispatcher rd = request.getRequestDispatcher("companyInfoRegist.jsp");
-
-		rd.forward(request, response);
+		System.out.println("会社名 : " + companyStockBaseInfoList.get(listNumber).getCompanyName());
+		System.out.println("証券コード : " + companyStockBaseInfoList.get(listNumber).getSecuritiesCode());
+		System.out.println("市場 : " + companyStockBaseInfoList.get(listNumber).getMarket());
 	}
 
 	/**
