@@ -53,9 +53,9 @@ public class TestSelectCompanies {
 		// END----------- comfirm selectFromName(name) method -----------END
 
 		// START----------- comfirm selectFromAmbiguous(name) method -----------START
-		String name = "X"; // 1
+//		String name = "X"; // 1
 //		String name = "Y"; // 1
-//		String name = "A"; // 2
+		String name = "A"; // 2
 
 		try {
 			companiesList = selectCompanies.selectFromAmbiguous(name);

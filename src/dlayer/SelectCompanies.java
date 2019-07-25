@@ -71,10 +71,10 @@ public class SelectCompanies {
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE name LIKE %?%";
+		String sql = selectAll + "WHERE name LIKE ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
-		psttmt.setString(1, name);
+		psttmt.setString(1, '%' + name + '%');
 
 		ResultSet rs = psttmt.executeQuery();
 
