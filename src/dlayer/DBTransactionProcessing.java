@@ -20,11 +20,15 @@ public class DBTransactionProcessing {
 	public void doRollBack() throws SQLException {
 		Connection conn = DriverManager.getConnection(url, user, password);
 
+		conn.setAutoCommit(false);
+
 		conn.rollback();
 	}
 
 	public void doCommit() throws SQLException {
 		Connection conn = DriverManager.getConnection(url, user, password);
+
+		conn.setAutoCommit(false);
 
 		conn.commit();
 	}
