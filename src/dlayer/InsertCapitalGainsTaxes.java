@@ -35,13 +35,16 @@ public class InsertCapitalGainsTaxes {
 				conn.commit();
 
 			} catch (Exception e) {
+				// TODO:executeUpdate()でのエラー処理を共通化する。
+				System.out.println("executeUpdate()でエラーが発生しました。");
 				conn.rollback();
 			}
 
 			psttmt.close();
 			conn.close();
 		} catch (Exception e) {
-
+			// TODO:データベースアクセスエラーが発生した場合に起こるエラーを共通化する。
+			System.out.println("データベースアクセスエラーが発生しました。");
 		}
 
 		return insertNumber;
