@@ -55,19 +55,35 @@ public class TestSelectCompanies {
 		// START----------- comfirm selectFromAmbiguous(name) method -----------START
 //		String name = "X"; // 1
 //		String name = "Y"; // 1
-		String name = "A"; // 2
+//		String name = "A"; // 2
+//
+//		try {
+//			companiesList = selectCompanies.selectFromAmbiguous(name);
+//		} catch (SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+//
+//		for (int i = 0; i < companiesList.size(); i++) {
+//			System.out.println("id : " + companiesList.get(i).getId());
+//			System.out.println("name : " + companiesList.get(i).getName());
+//		}
+		// END----------- comfirm selectFromAmbiguous(name) method -----------END
+
+		// START----------- comfirm selectCountName(name) method -----------START
+		int countNumber = 0;
+
+//		String name = "AAA"; //3
+		String name = "BBB"; //0
 
 		try {
-			companiesList = selectCompanies.selectFromAmbiguous(name);
+			countNumber = selectCompanies.selectCountName(name);
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 
-		for (int i = 0; i < companiesList.size(); i++) {
-			System.out.println("id : " + companiesList.get(i).getId());
-			System.out.println("name : " + companiesList.get(i).getName());
-		}
-		// END----------- comfirm selectFromAmbiguous(name) method -----------END
+		System.out.println(countNumber);
+		// END----------- comfirm selectCountName(name) method -----------END
 	}
 }
