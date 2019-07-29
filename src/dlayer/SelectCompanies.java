@@ -17,6 +17,7 @@ public class SelectCompanies {
 	final String password = dbConnectionInfo.getPassword();
 
 	final String selectAll = "SELECT * FROM companies ";
+	final String selectCount = "SELECT count(name) FROM companies ";
 
 	public Companies selectFromId(int id) throws SQLException {
 		Companies companies = new Companies();
@@ -92,5 +93,28 @@ public class SelectCompanies {
 		conn.close();
 
 		return companiesList;
+	}
+
+	public int selectCountName(String name) throws SQLException {
+		int countNumber = 0;
+
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = selectCount + "WHERE name = ?";
+
+		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setString(1, name);
+
+		ResultSet rs = psttmt.executeQuery();
+
+		while (rs.next()) {
+			countNumber = rs.getInt("count(name)");
+		}
+
+		rs.close();
+		psttmt.close();
+		conn.close();
+
+		return countNumber;
 	}
 }
