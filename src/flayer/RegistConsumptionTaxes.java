@@ -1,7 +1,5 @@
 package flayer;
 
-import java.sql.SQLException;
-
 import dlayer.InsertConsumptionTaxes;
 import fieldformat.ConsumptionTaxes;
 import fieldformat.DisplayContentsConsumptionTaxes;
@@ -27,12 +25,7 @@ public class RegistConsumptionTaxes {
 			// TODO : decide specification
 		} else {
 			// TODO : else not overlaped, insert to consumption_taxes table
-			try {
-				insertConsumptionTaxes.execInsert(consumptionTaxes);
-			} catch (SQLException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
+			insertConsumptionTaxes.execInsert(consumptionTaxes);
 		}
 	}
 }
