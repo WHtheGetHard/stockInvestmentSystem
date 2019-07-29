@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
+import flayer.RegistStcokBaseInfo;
 
 /**
  * Servlet implementation class RegistCompanyBaseInfo
@@ -40,9 +41,13 @@ public class RegistCompanyBaseInfo extends HttpServlet {
 
 		int listNumber = Integer.parseInt(request.getParameter("listNumber"));
 
-		System.out.println("会社名 : " + companyStockBaseInfoList.get(listNumber).getCompanyName());
-		System.out.println("証券コード : " + companyStockBaseInfoList.get(listNumber).getSecuritiesCode());
-		System.out.println("市場 : " + companyStockBaseInfoList.get(listNumber).getMarket());
+		CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
+
+		companyStockBaseInfo = companyStockBaseInfoList.get(listNumber);
+
+		RegistStcokBaseInfo registStcokBaseInfo = new RegistStcokBaseInfo();
+		registStcokBaseInfo.execRegistration(companyStockBaseInfo);
+
 	}
 
 	/**
