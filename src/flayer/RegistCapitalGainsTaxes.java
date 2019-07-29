@@ -1,7 +1,5 @@
 package flayer;
 
-import java.sql.SQLException;
-
 import dlayer.InsertCapitalGainsTaxes;
 import fieldformat.CapitalGainsTaxes;
 import fieldformat.DisplayContentsCapitalGainsTaxes;
@@ -26,12 +24,8 @@ public class RegistCapitalGainsTaxes {
 			// TODO : decide specification
 		} else {
 			// TODO : else not overlaped, insert to capital_gains_taxes table
-			try {
-				insertCapitalGainsTaxes.execInsert(capitalGainsTaxes);
-			} catch (SQLException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
+			insertCapitalGainsTaxes.execInsert(capitalGainsTaxes);
+
 		}
 
 
