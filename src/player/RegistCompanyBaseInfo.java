@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
+import flayer.ConfirmCompaniesRegistered;
 import flayer.RegistStcokBaseInfo;
 
 /**
@@ -45,8 +46,17 @@ public class RegistCompanyBaseInfo extends HttpServlet {
 
 		companyStockBaseInfo = companyStockBaseInfoList.get(listNumber);
 
-		RegistStcokBaseInfo registStcokBaseInfo = new RegistStcokBaseInfo();
-		registStcokBaseInfo.execRegistration(companyStockBaseInfo);
+		ConfirmCompaniesRegistered confirmCompaniesRegistered = new ConfirmCompaniesRegistered();
+		boolean isRegistered = false;
+
+		isRegistered = confirmCompaniesRegistered.isRegistered(companyStockBaseInfo.getCompanyName());
+
+		if (isRegistered) {
+			// TODO : 登録済みの場合の処理
+		} else {
+			RegistStcokBaseInfo registStcokBaseInfo = new RegistStcokBaseInfo();
+			registStcokBaseInfo.execRegistration(companyStockBaseInfo);
+		}
 
 	}
 
