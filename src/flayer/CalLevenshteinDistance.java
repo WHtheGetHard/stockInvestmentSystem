@@ -1,8 +1,10 @@
 package flayer;
 
+import fieldformat.SimilarityOfWord;
+
 public class CalLevenshteinDistance {
-	public int calculate(String base, String target) {
-		int distance = 0;
+	public SimilarityOfWord calculate(String base, String target) {
+		SimilarityOfWord similarityOfWord = new SimilarityOfWord();
 
 		char[] splitBase = base.toCharArray();
 		int baseLength = splitBase.length;
@@ -66,8 +68,26 @@ public class CalLevenshteinDistance {
 		}
 
 
-		distance = toCalcuArray[targetLength][baseLength];
+		int distance = toCalcuArray[targetLength][baseLength];
 
-		return distance;
+		int maxLength = 0;
+		if (targetLength < baseLength) {
+			maxLength = baseLength;
+		} else {
+			maxLength = targetLength;
+		}
+
+		double standardizeLeven = 0;
+
+		if (distance == 0) {
+			standardizeLeven = 1.0;
+		} else {
+			standardizeLeven = (double) distance / (double) maxLength;
+		}
+
+		similarityOfWord.setLevenshteinDistance(distance);
+		similarityOfWord.setStandardizeLeven(standardizeLeven);
+
+		return similarityOfWord;
 	}
 }
