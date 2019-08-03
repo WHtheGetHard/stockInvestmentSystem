@@ -1,6 +1,8 @@
 package flayer;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import fieldformat.CompanyStockBaseInfo;
 import fieldformat.CompanyStockBaseInfoWithDistance;
@@ -31,4 +33,19 @@ public class SearchCompanySimilarity {
 
 		return companyStockBaseInfoWithDistanceList;
 	}
+
+	public ArrayList<CompanyStockBaseInfoWithDistance> sortByStandardizeLeven(ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList) {
+		ToSortComparator toSortComparator = new ToSortComparator();
+		Collections.sort(companyStockBaseInfoWithDistanceList, toSortComparator);
+
+		return companyStockBaseInfoWithDistanceList;
+	}
+}
+
+class ToSortComparator implements Comparator<CompanyStockBaseInfoWithDistance> {
+	public int compare(CompanyStockBaseInfoWithDistance c1, CompanyStockBaseInfoWithDistance c2) {
+		return Double.compare(c1.getStandardizeLeven(), c2.getStandardizeLeven());
+	}
+
+
 }

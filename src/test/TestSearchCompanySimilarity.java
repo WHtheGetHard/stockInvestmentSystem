@@ -34,5 +34,18 @@ public class TestSearchCompanySimilarity {
 			System.out.println("標準化レーベンシュタイン距離 : " + companyStockBaseInfoWithDistanceList.get(i).getStandardizeLeven() + " ");
 		}
 		// END-------------- confirm calcSimilarity(searchCompanyName, companyStockBaseInfoList)method --------------END
+
+		// START-------------- confirm sortByStandardizeLeven(ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList)method --------------START
+		ArrayList<CompanyStockBaseInfoWithDistance> sortedCompanyStockBaseInfoWithDistanceList = new ArrayList<CompanyStockBaseInfoWithDistance>();
+
+		sortedCompanyStockBaseInfoWithDistanceList = searchCompanySimilarity.sortByStandardizeLeven(companyStockBaseInfoWithDistanceList);
+
+		for (int i = 0; i < sortedCompanyStockBaseInfoWithDistanceList.size(); i++) {
+			System.out.print("名前 : " + sortedCompanyStockBaseInfoWithDistanceList.get(i).getCompanyName() + " ");
+			System.out.print("レーベンシュタイン距離 : " + sortedCompanyStockBaseInfoWithDistanceList.get(i).getLevenshteinDistance() + " ");
+			System.out.println("標準化レーベンシュタイン距離 : " + sortedCompanyStockBaseInfoWithDistanceList.get(i).getStandardizeLeven() + " ");
+		}
+		// END-------------- confirm sortByStandardizeLeven(ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList)method --------------END
+
 	}
 }
