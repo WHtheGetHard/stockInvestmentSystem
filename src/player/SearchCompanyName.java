@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
+import fieldformat.CompanyStockBaseInfoWithDistance;
+import flayer.SearchCompanySimilarity;
 import flayer.SecuritiesCode;
 
 /**
@@ -44,8 +46,17 @@ public class SearchCompanyName extends HttpServlet {
 		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
 		companyStockBaseInfoList = securitiesCode.getResults(article);
 
+		ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList
+			= new ArrayList<CompanyStockBaseInfoWithDistance>();
+
+		SearchCompanySimilarity searchCompanySimilarity = new SearchCompanySimilarity();
+
+		companyStockBaseInfoWithDistanceList = searchCompanySimilarity.calcSimilarity(companyName, companyStockBaseInfoList);
+
+		companyStockBaseInfoWithDistanceList = searchCompanySimilarity.sortByStandardizeLeven(companyStockBaseInfoWithDistanceList);
+
 		HttpSession session = request.getSession();
-		session.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
+		session.setAttribute("companyStockBaseInfoWithDistanceList", companyStockBaseInfoWithDistanceList);
 
 		RequestDispatcher rd = request.getRequestDispatcher("companyInfoRegist.jsp");
 

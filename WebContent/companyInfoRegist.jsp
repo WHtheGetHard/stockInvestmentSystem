@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="fieldformat.CompanyStockBaseInfo" %>
+<%@ page import="fieldformat.CompanyStockBaseInfoWithDistance" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,10 +32,10 @@
 	</article>
 
 <%
-	ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
-	companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) session.getAttribute("companyStockBaseInfoList");
+	ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList = new ArrayList<CompanyStockBaseInfoWithDistance>();
+	companyStockBaseInfoWithDistanceList = (ArrayList<CompanyStockBaseInfoWithDistance>) session.getAttribute("companyStockBaseInfoWithDistanceList");
 
-	if (companyStockBaseInfoList != null) {
+	if (companyStockBaseInfoWithDistanceList != null) {
 %>
 		<form action="RegistCompanyBaseInfo" method="post">
 			<table>
@@ -46,17 +46,17 @@
 					<th>チェック</th>
 				</tr>
 <%
-			for (int i = 0; i < companyStockBaseInfoList.size(); i++) {
+			for (int i = 0; i < companyStockBaseInfoWithDistanceList.size(); i++) {
 %>
 				<tr>
 					<td>
-						<%= companyStockBaseInfoList.get(i).getCompanyName() %>
+						<%= companyStockBaseInfoWithDistanceList.get(i).getCompanyName() %>
 					</td>
 					<td>
-						<%= companyStockBaseInfoList.get(i).getSecuritiesCode() %>
+						<%= companyStockBaseInfoWithDistanceList.get(i).getSecuritiesCode() %>
 					</td>
 					<td>
-						<%= companyStockBaseInfoList.get(i).getMarket() %>
+						<%= companyStockBaseInfoWithDistanceList.get(i).getMarket() %>
 					</td>
 					<td>
 						<input type="checkbox" name="listNumber" value="<%= i %>">
