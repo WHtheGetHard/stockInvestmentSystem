@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="fieldformat.UserInformation" %>
+
 	<header>
 		<h1>株式投資システム</h1>
 
@@ -46,7 +48,36 @@
 						<li class="child">保有株情報</li>
 					</ul>
 				</li>
+
+				<li class="parents" data-contents="user-info" class="user-info-area">
+					ユーザ情報
+					<ul class="child" data-contents="user-info" style="display: none">
+						<%
+							UserInformation userInformation = new UserInformation();
+							userInformation = (UserInformation) session.getAttribute("userInformation");
+
+							if (userInformation == null) {
+						%>
+							<li class="child">
+								ログイン
+							</li>
+							<li class="child">
+								ユーザ登録
+							</li>
+						<%} else {
+								if (userInformation.isLoggingIn()) {
+						%>
+									<li class="child">
+										ログアウト
+									</li>
+						<%
+								}
+							}
+						%>
+					</ul>
+				</li>
 			</ul>
+
 		</nav>
 	</header>
 
