@@ -7,6 +7,8 @@ public class UserInformation {
 
 	private String userMail;
 
+	private String userPassword;
+
 	private boolean isLoggingIn;
 
 	public int getUserId() {
@@ -31,6 +33,14 @@ public class UserInformation {
 
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
+	}
+
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
 	public boolean isLoggingIn() {

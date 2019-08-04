@@ -59,10 +59,10 @@
 							if (userInformation == null) {
 						%>
 							<li class="child">
-								ログイン
+								<a href="./userSign.jsp?type=login">ログイン</a>
 							</li>
 							<li class="child">
-								ユーザ登録
+								<a href="./userSign.jsp?type=regist">ユーザ登録</a>
 							</li>
 						<%} else {
 								if (userInformation.isLoggingIn()) {
