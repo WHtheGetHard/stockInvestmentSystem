@@ -9,20 +9,9 @@
 </head>
 <body>
 	<%
-		String title = request.getParameter("title");
-		if ("ユーザ名".equals(title)) {
+		String errorMsg = request.getParameter("message");
 	%>
-			<strong>ユーザ名を入力してください。</strong>
-	<%
-		} else if ("パスワード".equals(title)) {
-	%>
-			<strong>パスワードは半角英数字で入力してください。</strong>
-	<%
-		} else if ("メールアドレス".equals(title)) {
-	%>
-			<strong>メールアドレスはxxxx@xxx.xxx形式で入力してください。</strong>
-	<%
-		}
-	%>
+			<strong><%= errorMsg %></strong>
+
 </body>
 </html>

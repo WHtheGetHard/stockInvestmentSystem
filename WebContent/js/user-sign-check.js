@@ -13,23 +13,19 @@ function judgeContentsInput($blurObject) {
 
 	let name = $blurObject.attr('name');
 
+	let errorMsg = '';
 	if (name === 'user-name') {
 		isInputed = simpleInputCheck(inputedValue);
-
+		errorMsg = inputedContents + 'を入力してください。';
 	} else if (name === 'user-password') {
 		isInputed = checkOnlyHalfNumber(inputedValue);
-
+		errorMsg = inputedContents + 'には半角英数字を入力してください。';
 	} else if (name == 'user-mail') {
 		isInputed = isMailFormat(inputedValue);
+		errorMsg = inputedContents + 'はxxxx@xxx.xx形式で入力してください。';
 	}
 
-	isInvalid(isInputed, inputedContents);
-}
-
-function isInvalid(isInputed, inputedContents) {
-	if (!isInputed) {
-		dispErrorWindow('inputError.jsp?title='+inputedContents);
-	}
+	isInvalid(isInputed, errorMsg);
 }
 
 function checkAllInputed() {

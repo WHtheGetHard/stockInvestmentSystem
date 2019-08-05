@@ -1,3 +1,9 @@
+function isInvalid(isInputed, errorMsg) {
+	if (!isInputed) {
+		dispErrorWindow('inputError.jsp?message='+errorMsg);
+	}
+}
+
 function dispErrorWindow(url){
 	let subWidth = 500;
 	let subHeight = 100;

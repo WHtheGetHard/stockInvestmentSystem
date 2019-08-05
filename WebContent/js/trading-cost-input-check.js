@@ -62,15 +62,16 @@ $('input[data-type="percentage"]').blur(function() {
 		return;
 	}
 
-
 	// ピリオドを削除した値を取得する。
 	let replacePeriodInputValue = replaceTarget(inputValue, 'period');
 
 	let isOnlyHalfNumber = onlyHalfNumberCheck(replacePeriodInputValue);
 
-	if (!isOnlyHalfNumber) {
-		console.log(elementTitle + 'にはx.xxx形式で入力してください。');
+	let errorMsg = '';
 
+	if (!isOnlyHalfNumber) {
+		errorMsg = elementTitle + 'にはx.xxx形式で入力してください。';
+		isInvalid(isOnlyHalfNumber, errorMsg);
 		// 各入力チェックの値をfalseに設定する
 		isValidInput = false;
 
@@ -84,7 +85,8 @@ $('input[data-type="percentage"]').blur(function() {
 	if (isThirdDecimal) {
 		isValidInput = true;
 	} else {
-		console.log(elementTitle + 'にはx.xxx形式で入力してください。');
+		errorMsg = elementTitle + 'にはx.xxx形式で入力してください。';
+		isInvalid(isThirdDecimal, errorMsg);
 
 		isValidInput = false;
 	}
@@ -111,10 +113,11 @@ $('input[data-type="yyyymmdd"]').blur(function() {
 
 	let isAllInputed = false;
 
-	if (!isCorrectForm) {
-		// TODO: alertだと延々ダイアログが表示される。
-		console.log('日付項目はyyyy/mm/dd形式で入力してください。');
+	let errorMsg = '';
 
+	if (!isCorrectForm) {
+		errorMsg = '日付項目はyyyy/mm/dd形式で入力してください。';
+		isInvalid(isCorrectForm, errorMsg);
 		isAllInputed = false;
 
 		// 各入力チェックの値をfalseに設定する
@@ -140,8 +143,8 @@ $('input[data-type="yyyymmdd"]').blur(function() {
 			return;
 
 		} else {
-			// TODO: alertだと延々ダイアログが表示される。
-			console.log('適用開始日には適用終了日以前の日付を入力してください。');
+			errorMsg = '適用開始日には適用終了日以前の日付を入力してください。';
+			isInvalid(isStartBeforeEnd, errorMsg);
 
 			// 各入力チェックの値をfalseに設定する
 			isValidInput = false;

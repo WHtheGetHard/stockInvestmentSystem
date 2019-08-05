@@ -140,3 +140,4 @@ if (tradingCostTypeSelectCheckResult != null) {
 
 <script type="text/javascript" src="./js/trading-cost-input-check.js"></script>
 <script type="text/javascript" src="./js/input-check-common-handling.js"></script>
+<script type="text/javascript" src="./js/common-sub-display.js"></script>
