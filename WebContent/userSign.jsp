@@ -59,5 +59,6 @@
 	</article>
 	<script type="text/javascript" src="./js/user-sign-check.js"></script>
 	<script type="text/javascript" src="./js/input-check-common-handling.js"></script>
+	<script type="text/javascript" src="./js/common-sub-display.js"></script>
 </body>
 </html>

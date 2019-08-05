@@ -16,7 +16,7 @@ function judgeContentsInput($blurObject) {
 		if (nameIsInputed) {
 
 		} else {
-			console.log(inputedContents + "を入力してください。");
+			dispErrorWindow('inputError.jsp?title='+inputedContents);
 		}
 
 	} else if (name === 'user-password') {
@@ -25,7 +25,7 @@ function judgeContentsInput($blurObject) {
 		if (passwordIsValidInput) {
 
 		} else {
-			console.log(inputedContents + "には半角英数字を入力してください。");
+			dispErrorWindow('inputError.jsp?title='+inputedContents);
 		}
 	} else if (name == 'user-mail') {
 		let mailIsValidInput = isMailFormat(inputedValue);
@@ -33,7 +33,7 @@ function judgeContentsInput($blurObject) {
 		if (mailIsValidInput) {
 
 		} else
-			console.log(inputedContents + "はxxxx@xxx.xxx形式で入力してください。");
+			dispErrorWindow('inputError.jsp?title='+inputedContents);
 	}
 }
 
