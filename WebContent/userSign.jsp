@@ -19,14 +19,14 @@
 				<tr>
 					<td>ユーザ名 : </td>
 					<td>
-						<input type="text" name="user-name" autocomplete="off" placeholder="User1">
+						<input type="text" name="user-name" autocomplete="off" placeholder="User1" title="ユーザ名">
 					</td>
 				</tr>
 
 				<tr>
 					<td>パスワード : </td>
 					<td>
-						<input type="text" name="user-password" autocomplete="off" placeholder="password">
+						<input type="text" name="user-password" autocomplete="off" placeholder="password" title="パスワード">
 					</td>
 				</tr>
 
@@ -37,7 +37,7 @@
 					<tr>
 						<td>メールアドレス : </td>
 						<td>
-							<input type="text" name="user-mail" autocomplete="off" placeholder="XXX@xx.com">
+							<input type="text" name="user-mail" autocomplete="off" placeholder="XXX@xx.com" title="メールアドレス">
 							<input type="hidden" name="type" value="regist">
 						</td>
 					</tr>
@@ -51,11 +51,13 @@
 
 				<tr>
 					<td>
-						<input type="submit" value="登録">
+						<input type="submit" value="登録" disabled>
 					</td>
 				</tr>
 			</table>
 		</form>
 	</article>
+	<script type="text/javascript" src="./js/user-sign-check.js"></script>
+	<script type="text/javascript" src="./js/input-check-common-handling.js"></script>
 </body>
 </html>

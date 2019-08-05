@@ -1,3 +1,38 @@
+// 入力チェック
+function simpleInputCheck(inputValue) {
+	let isInputed = false;
+
+	if (inputValue === '' || inputValue === null) {
+		isInputed = false;
+	} else {
+		isInputed = true;
+	}
+
+	return isInputed;
+}
+
+// 半角数値のみが入力されているかチェック
+function checkOnlyHalfNumber(inputValue) {
+	let isOnlyHalfNumber = false;
+
+	const regexp = new RegExp('^[0-9a-zA-Z]+$');
+
+	isOnlyHalfNumber = isMatchedCheck(inputValue, regexp);
+
+	return isOnlyHalfNumber;
+}
+
+// メールアドレス形式のチェック
+function isMailFormat(inputValue) {
+	let isInputedValidType = false;
+
+	const regexp = new RegExp('^[0-9a-zA-Z]{1,}@[a-z\.]+$');
+
+	isInputedValidType = isMatchedCheck(inputValue, regexp);
+
+	return isInputedValidType;
+}
+
 // 第一引数の文字列から、第二引数に指定した文字列を削除する
 function replaceTarget(inputValue, target) {
 	let targetRegex;
