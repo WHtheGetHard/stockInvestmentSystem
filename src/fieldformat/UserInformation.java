@@ -9,8 +9,6 @@ public class UserInformation {
 
 	private String userPassword;
 
-	private boolean isLoggingIn;
-
 	public int getUserId() {
 		return userId;
 	}
@@ -41,13 +39,5 @@ public class UserInformation {
 
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
-	}
-
-	public boolean isLoggingIn() {
-		return isLoggingIn;
-	}
-
-	public void setLoggingIn(boolean isLoggingIn) {
-		this.isLoggingIn = isLoggingIn;
 	}
 }
