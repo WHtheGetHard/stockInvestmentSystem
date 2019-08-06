@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
+import fieldformat.CompanyStockBaseInfoWithDistance;
 import flayer.ConfirmCompaniesRegistered;
 import flayer.RegistStcokBaseInfo;
 
@@ -37,14 +38,16 @@ public class RegistCompanyBaseInfo extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
-		companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) session.getAttribute("companyStockBaseInfoList");
+		ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList = new ArrayList<CompanyStockBaseInfoWithDistance>();
+		companyStockBaseInfoWithDistanceList = (ArrayList<CompanyStockBaseInfoWithDistance>) session.getAttribute("companyStockBaseInfoWithDistanceList");
 
 		int listNumber = Integer.parseInt(request.getParameter("listNumber"));
 
 		CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
 
-		companyStockBaseInfo = companyStockBaseInfoList.get(listNumber);
+		companyStockBaseInfo.setCompanyName(companyStockBaseInfoWithDistanceList.get(listNumber).getCompanyName());
+		companyStockBaseInfo.setMarket(companyStockBaseInfoWithDistanceList.get(listNumber).getMarket());
+		companyStockBaseInfo.setSecuritiesCode(companyStockBaseInfoWithDistanceList.get(listNumber).getSecuritiesCode());
 
 		ConfirmCompaniesRegistered confirmCompaniesRegistered = new ConfirmCompaniesRegistered();
 		boolean isRegistered = false;
