@@ -38,6 +38,9 @@ public class InsertUserInfo {
 				conn.rollback();
 			}
 
+			psttmt.close();
+			conn.close();
+
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
