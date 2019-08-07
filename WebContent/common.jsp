@@ -65,13 +65,7 @@
 								<a href="./userSign.jsp?type=regist">ユーザ登録</a>
 							</li>
 						<%} else {
-								if (userInformation.isLoggingIn()) {
-						%>
-									<li class="child">
-										ログアウト
-									</li>
-						<%
-								}
+
 							}
 						%>
 					</ul>
