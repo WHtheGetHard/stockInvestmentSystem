@@ -3,6 +3,7 @@ package player;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fieldformat.CompanyStockBaseInfo;
 import fieldformat.CompanyStockBaseInfoWithDistance;
+import fieldformat.MessageAreaDisplayContents;
 import flayer.ConfirmCompaniesRegistered;
 import flayer.RegistStcokBaseInfo;
 
@@ -54,13 +56,26 @@ public class RegistCompanyBaseInfo extends HttpServlet {
 
 		isRegistered = confirmCompaniesRegistered.isRegistered(companyStockBaseInfo.getCompanyName());
 
+		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
+		String message = "" + companyStockBaseInfo.getCompanyName() + "";
 		if (isRegistered) {
-			// TODO : 登録済みの場合の処理
+			message += "は既に登録済みです。";
+			messageAreaDisplayContents.setError(true);
+			messageAreaDisplayContents.setMessage(message);
 		} else {
 			RegistStcokBaseInfo registStcokBaseInfo = new RegistStcokBaseInfo();
 			registStcokBaseInfo.execRegistration(companyStockBaseInfo);
+
+			message += "を登録しました。";
+			messageAreaDisplayContents.setError(false);
+			messageAreaDisplayContents.setMessage(message);
 		}
 
+		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
+		RequestDispatcher rd = request.getRequestDispatcher("companyInfoRegist.jsp");
+
+		rd.forward(request, response);
 	}
 
 	/**
