@@ -2,13 +2,18 @@ package player;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fieldformat.InputUserInfo;
+import fieldformat.UserInfoLoginCheckResult;
+import fieldformat.UserInfoRegistCheckResult;
+import flayer.ConfirmUserInfo;
 
 /**
  * Servlet implementation class UserInfoSign
@@ -34,17 +39,45 @@ public class UserInfoSign extends HttpServlet {
 
 		InputUserInfo inputUserInfo = new InputUserInfo();
 
+		ConfirmUserInfo confirmUserInfo = new ConfirmUserInfo();
+
 		if ("regist".equals(type)) {
 			inputUserInfo.setUserName(request.getParameter("user-name"));
 			inputUserInfo.setUserPassword(request.getParameter("user-password"));
 			inputUserInfo.setUserMail(request.getParameter("user-mail"));
 
+			UserInfoRegistCheckResult userInfoRegistCheckResult = new UserInfoRegistCheckResult();
+			userInfoRegistCheckResult = confirmUserInfo.execRegist(inputUserInfo);
+
+			if (userInfoRegistCheckResult.isRegistSuccess()) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userInformation", userInfoRegistCheckResult.getUserInformation());
+				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
+				rd.forward(request, response);
+
+			} else {
+				request.setAttribute("userInfoRegistCheckResult", userInfoRegistCheckResult);
+				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
+				rd.forward(request, response);
+			}
 
 		} else if ("login".equals(type)) {
 			inputUserInfo.setUserName(request.getParameter("user-name"));
 			inputUserInfo.setUserPassword(request.getParameter("user-password"));
 
+			UserInfoLoginCheckResult userInfoLoginCheckResult = new UserInfoLoginCheckResult();
+			userInfoLoginCheckResult = confirmUserInfo.execLogin(inputUserInfo);
 
+			if (userInfoLoginCheckResult.isLoginSuccess()) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userInformation", userInfoLoginCheckResult.getUserInformation());
+				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("userInfoLoginCheckResult", userInfoLoginCheckResult);
+				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
+				rd.forward(request, response);
+			}
 		}
 	}
 
