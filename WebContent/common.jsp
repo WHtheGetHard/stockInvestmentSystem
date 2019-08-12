@@ -4,6 +4,7 @@
 <%@ page import="fieldformat.UserInformation" %>
 <%@ page import="fieldformat.MessageAreaDisplayContents" %>
 
+
 	<header>
 		<h1>株式投資システム</h1>
 
@@ -66,7 +67,12 @@
 								<a href="./userSign.jsp?type=regist">ユーザ登録</a>
 							</li>
 						<%} else {
-
+%>
+							<li class="child">
+								<form>
+								</form>
+							</li>
+<%
 							}
 						%>
 					</ul>
@@ -94,7 +100,11 @@
 			}
 		}
 %>
+
+
 	</article>
+
+<%@ include file="./userInfoMessage.jsp"%>
 
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./js/common-effect.js"></script>

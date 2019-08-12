@@ -1,6 +1,12 @@
 header {
+	margin: 0px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 	background-image: url("../img/common-nav.jpg");
 	background-size: cover;
+	-webkit-text-stroke: 0.1px #FFFFFF;
 }
 
 h1 {
@@ -14,6 +20,10 @@ ul {
 
 ul .parents {
 	float: left;
+}
+
+ul .child {
+	z-index: 1;
 }
 
 li {
