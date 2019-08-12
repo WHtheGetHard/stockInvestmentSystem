@@ -22,14 +22,18 @@ ul .parents {
 	float: left;
 }
 
-ul .child {
-	z-index: 1;
-}
-
 li {
 	width : 150px;
 }
 
-article {
-	clear: left;
+.message-area {
+	position: absolute;
+	top: 89px;
+	width: 100%;
+}
+
+.contents-area {
+	position: absolute;
+	top: 110px;
+	width: 100%;
 }

@@ -82,7 +82,8 @@
 		</nav>
 	</header>
 
-	<article class="message-area">
+	<div class="message-area">
+		<strong>Test</strong>
 
 <%
 		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
@@ -102,7 +103,7 @@
 %>
 
 
-	</article>
+	</div>
 
 <%@ include file="./userInfoMessage.jsp"%>
 

@@ -11,11 +11,11 @@
 </head>
 <body>
 	<%@ include file="./common.jsp" %>
-	<article>
+	<div class="contents-area">
 		Test1<br>
 		Test2<br>
 		Test3<br>
 		Test4<br>
-	</article>
+	</div>
 </body>
 </html>
