@@ -16,7 +16,7 @@
 <body>
 	<%@ include file="./common.jsp" %>
 
-	<article>
+	<div class="contents-area">
 		<form action="SearchCompanyName" method="post">
 			<table>
 				<tr>
@@ -29,7 +29,6 @@
 
 			<input type="submit" value="確認">
 		</form>
-	</article>
 
 <%
 	ArrayList<CompanyStockBaseInfoWithDistance> companyStockBaseInfoWithDistanceList = new ArrayList<CompanyStockBaseInfoWithDistance>();
@@ -71,6 +70,6 @@
 <%
 	}
 %>
-
+	</div>
 </body>
 </html>

@@ -13,7 +13,7 @@
 </head>
 <body>
 	<%@ include file="./common.jsp" %>
-	<article>
+	<div class="contents-area">
 		<form action="TradingCostTypeSelect" method="post">
 			<select name="tradingCostType">
 				<option value="1">売買委託手数料</option>
@@ -26,6 +26,6 @@
 		</form>
 
 		<%@ include file="./tradingCostRegistContents.jsp" %>
-	</article>
+	</div>
 </body>
 </html>
