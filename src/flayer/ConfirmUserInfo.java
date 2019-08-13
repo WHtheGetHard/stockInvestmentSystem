@@ -35,7 +35,7 @@ public class ConfirmUserInfo {
 			}
 
 			userInfoLoginCheckResult.setLoginSuccess(true);
-			userInfoLoginCheckResult.setMessage("");
+			userInfoLoginCheckResult.setMessage("ようこそ" + inputUserInfo.getUserName() + "さん");
 			userInfoLoginCheckResult.setUserInformation(userInformation);
 
 		} else {
@@ -119,7 +119,7 @@ public class ConfirmUserInfo {
 
 		if (insertNumber == 1) {
 			userInfoRegistCheckResult.setRegistSuccess(true);
-			userInfoRegistCheckResult.setMessage("");
+			userInfoRegistCheckResult.setMessage("ようこそ" + inputUserInfo.getUserName() + "さん");
 			userInfoRegistCheckResult.setUserInformation(userInformation);
 		} else {
 			userInfoRegistCheckResult.setRegistSuccess(false);

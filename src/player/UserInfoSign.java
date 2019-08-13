@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fieldformat.InputUserInfo;
+import fieldformat.MessageAreaDisplayContents;
 import fieldformat.UserInfoLoginCheckResult;
 import fieldformat.UserInfoRegistCheckResult;
 import flayer.ConfirmUserInfo;
@@ -49,13 +50,23 @@ public class UserInfoSign extends HttpServlet {
 			UserInfoRegistCheckResult userInfoRegistCheckResult = new UserInfoRegistCheckResult();
 			userInfoRegistCheckResult = confirmUserInfo.execRegist(inputUserInfo);
 
+			MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
+
 			if (userInfoRegistCheckResult.isRegistSuccess()) {
+				messageAreaDisplayContents.setError(false);
+				messageAreaDisplayContents.setMessage(userInfoRegistCheckResult.getMessage());
+				request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
 				HttpSession session = request.getSession();
 				session.setAttribute("userInformation", userInfoRegistCheckResult.getUserInformation());
 				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
 				rd.forward(request, response);
 
 			} else {
+				messageAreaDisplayContents.setError(true);
+				messageAreaDisplayContents.setMessage(userInfoRegistCheckResult.getMessage());
+				request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
 				request.setAttribute("userInfoRegistCheckResult", userInfoRegistCheckResult);
 				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
 				rd.forward(request, response);
@@ -68,12 +79,22 @@ public class UserInfoSign extends HttpServlet {
 			UserInfoLoginCheckResult userInfoLoginCheckResult = new UserInfoLoginCheckResult();
 			userInfoLoginCheckResult = confirmUserInfo.execLogin(inputUserInfo);
 
+			MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
+
 			if (userInfoLoginCheckResult.isLoginSuccess()) {
+				messageAreaDisplayContents.setError(false);
+				messageAreaDisplayContents.setMessage(userInfoLoginCheckResult.getMessage());
+				request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
 				HttpSession session = request.getSession();
 				session.setAttribute("userInformation", userInfoLoginCheckResult.getUserInformation());
 				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
 				rd.forward(request, response);
 			} else {
+				messageAreaDisplayContents.setError(true);
+				messageAreaDisplayContents.setMessage(userInfoLoginCheckResult.getMessage());
+				request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
 				request.setAttribute("userInfoLoginCheckResult", userInfoLoginCheckResult);
 				RequestDispatcher rd = request.getRequestDispatcher("userSign.jsp");
 				rd.forward(request, response);

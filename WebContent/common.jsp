@@ -104,7 +104,5 @@
 
 	</div>
 
-<%@ include file="./userInfoMessage.jsp"%>
-
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./js/common-effect.js"></script>
