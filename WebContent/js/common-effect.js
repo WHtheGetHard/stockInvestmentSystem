@@ -17,6 +17,7 @@ $('li.parents').hover(
 function activationControl(dataContentsName, isDisplay) {
 	if (isDisplay) {
 		$('ul[data-contents="'+dataContentsName+'"]').css('display', 'block');
+		$('ul[data-contents="'+dataContentsName+'"]').css('background-color','#BBBBBB');
 	} else {
 		$('ul[data-contents="'+dataContentsName+'"]').css('display', 'none');
 	}
