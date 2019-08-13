@@ -83,7 +83,6 @@
 	</header>
 
 	<div class="message-area">
-		<strong>Test</strong>
 
 <%
 		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();

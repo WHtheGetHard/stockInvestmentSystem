@@ -12,10 +12,7 @@
 <body>
 	<%@ include file="./common.jsp" %>
 	<div class="contents-area">
-		Test1<br>
-		Test2<br>
-		Test3<br>
-		Test4<br>
+
 	</div>
 </body>
 </html>
