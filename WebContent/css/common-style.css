@@ -8,6 +8,7 @@ header {
 	background-image: url("../img/common-nav.jpg");
 	background-size: cover;
 	-webkit-text-stroke: 0.1px #FFFFFF;
+	z-index: 1;
 }
 
 h1 {
