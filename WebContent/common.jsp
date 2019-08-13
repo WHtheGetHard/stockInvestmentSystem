@@ -69,7 +69,8 @@
 						<%} else {
 %>
 							<li class="child">
-								<form>
+								<form action="Logout" method="post">
+									<input type="submit" id="logout" value="ログアウト">
 								</form>
 							</li>
 <%
