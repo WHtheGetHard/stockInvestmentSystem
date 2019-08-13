@@ -71,6 +71,8 @@ public class RegistCompanyBaseInfo extends HttpServlet {
 			messageAreaDisplayContents.setMessage(message);
 		}
 
+		session.removeAttribute("companyStockBaseInfoWithDistanceList");
+
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
 
 		RequestDispatcher rd = request.getRequestDispatcher("companyInfoRegist.jsp");

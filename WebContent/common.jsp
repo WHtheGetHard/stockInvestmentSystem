@@ -91,11 +91,11 @@
 		if (messageAreaDisplayContents != null) {
 			if (messageAreaDisplayContents.isError()) {
 %>
-				<%= messageAreaDisplayContents.getMessage() %>
+				<strong class="wrong"><%= messageAreaDisplayContents.getMessage() %></strong>
 <%
 			} else {
 %>
-				<%= messageAreaDisplayContents.getMessage() %>
+				<strong class="okay"><%= messageAreaDisplayContents.getMessage() %></strong>
 <%
 			}
 		}
