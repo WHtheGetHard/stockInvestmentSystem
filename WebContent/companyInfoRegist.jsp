@@ -3,6 +3,7 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="fieldformat.CompanyStockBaseInfoWithDistance" %>
+<%@ page import="fieldformat.CompanyStockBaseInfo" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -67,6 +68,29 @@
 			</table>
 			<input type="submit" value="登録">
 		</form>
+<%
+	}
+%>
+
+<%
+	CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
+	companyStockBaseInfo = (CompanyStockBaseInfo) request.getAttribute("companyStockBaseInfo");
+
+	if (companyStockBaseInfo != null) {
+%>
+		選択した企業情報
+		<table>
+			<tr>
+				<th>会社名</th>
+				<th>証券コード</th>
+				<th>上場市場</th>
+			</tr>
+			<tr>
+				<td><%= companyStockBaseInfo.getCompanyName() %></td>
+				<td><%= companyStockBaseInfo.getSecuritiesCode() %></td>
+				<td><%= companyStockBaseInfo.getMarket() %></td>
+			</tr>
+		</table>
 <%
 	}
 %>
