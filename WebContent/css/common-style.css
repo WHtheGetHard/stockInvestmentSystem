@@ -43,3 +43,12 @@ strong.wrong {
 	top: 110px;
 	width: 100%;
 }
+
+table.list-table, td.list-table, th.list-table {
+    border-collapse: collapse;
+    border:1px solid;
+}
+
+tr.list-table:nth-child(even) {
+	background: #EEEEEE;
+}

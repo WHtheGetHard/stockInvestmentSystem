@@ -38,27 +38,27 @@
 	if (companyStockBaseInfoWithDistanceList != null) {
 %>
 		<form action="RegistCompanyBaseInfo" method="post">
-			<table>
-				<tr>
-					<th>会社名</th>
-					<th>証券コード</th>
-					<th>上場市場</th>
-					<th>チェック</th>
+			<table class="list-table">
+				<tr class="list-table">
+					<th class="list-table">会社名</th>
+					<th class="list-table">証券コード</th>
+					<th class="list-table">上場市場</th>
+					<th class="list-table">チェック</th>
 				</tr>
 <%
 			for (int i = 0; i < companyStockBaseInfoWithDistanceList.size(); i++) {
 %>
-				<tr>
-					<td>
+				<tr class="list-table">
+					<td class="list-table">
 						<%= companyStockBaseInfoWithDistanceList.get(i).getCompanyName() %>
 					</td>
-					<td>
+					<td class="list-table">
 						<%= companyStockBaseInfoWithDistanceList.get(i).getSecuritiesCode() %>
 					</td>
-					<td>
+					<td class="list-table">
 						<%= companyStockBaseInfoWithDistanceList.get(i).getMarket() %>
 					</td>
-					<td>
+					<td class="list-table">
 						<input type="checkbox" name="listNumber" value="<%= i %>">
 					</td>
 				</tr>

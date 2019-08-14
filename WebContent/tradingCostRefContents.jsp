@@ -36,21 +36,21 @@ if (tradingCostTypeSelectCheckResult != null) {
 
 			if (displayContentsBrokerageCommissionsList != null) {
 %>
-				<table>
-					<tr>
-						<th>証券会社名</th>
-						<th>委託手数料</th>
-						<th>適用開始日</th>
-						<th>適用終了日</th>
+				<table class="list-table">
+					<tr class="list-table">
+						<th class="list-table">証券会社名</th>
+						<th class="list-table">委託手数料</th>
+						<th class="list-table">適用開始日</th>
+						<th class="list-table">適用終了日</th>
 					</tr>
 <%
 				for (int i = 0; i <displayContentsBrokerageCommissionsList.size(); i++ ){
 %>
-					<tr>
-						<td><%= displayContentsBrokerageCommissionsList.get(i).getCompanyName() %></td>
-						<td><%= displayContentsBrokerageCommissionsList.get(i).getBraokerageCommission() %></td>
-						<td><%= displayContentsBrokerageCommissionsList.get(i).getStartDate() %></td>
-						<td><%= displayContentsBrokerageCommissionsList.get(i).getEndDate() %></td>
+					<tr class="list-table">
+						<td class="list-table"><%= displayContentsBrokerageCommissionsList.get(i).getCompanyName() %></td>
+						<td class="list-table"><%= displayContentsBrokerageCommissionsList.get(i).getBraokerageCommission() %></td>
+						<td class="list-table"><%= displayContentsBrokerageCommissionsList.get(i).getStartDate() %></td>
+						<td class="list-table"><%= displayContentsBrokerageCommissionsList.get(i).getEndDate() %></td>
 					</tr>
 <%
 				}
@@ -81,19 +81,19 @@ if (tradingCostTypeSelectCheckResult != null) {
 
 			if (capitalGainsTaxesList != null) {
 %>
-				<table>
-					<tr>
-						<th>キャピタルゲイン課税</th>
-						<th>適用開始日</th>
-						<th>適用終了日</th>
+				<table class="list-table">
+					<tr class="list-table">
+						<th class="list-table">キャピタルゲイン課税</th>
+						<th class="list-table">適用開始日</th>
+						<th class="list-table">適用終了日</th>
 					</tr>
 <%
 				for (int i = 0; i < capitalGainsTaxesList.size(); i++) {
 %>
-					<tr>
-						<td><%= capitalGainsTaxesList.get(i).getTaxRate() %></td>
-						<td><%= capitalGainsTaxesList.get(i).getStartDay() %></td>
-						<td><%= capitalGainsTaxesList.get(i).getEndDay() %></td>
+					<tr class="list-table">
+						<td class="list-table"><%= capitalGainsTaxesList.get(i).getTaxRate() %></td>
+						<td class="list-table"><%= capitalGainsTaxesList.get(i).getStartDay() %></td>
+						<td class="list-table"><%= capitalGainsTaxesList.get(i).getEndDay() %></td>
 					</tr>
 
 <%
@@ -123,20 +123,20 @@ if (tradingCostTypeSelectCheckResult != null) {
 
 			if (consumptionTaxesList != null) {
 %>
-				<table>
-					<tr>
-						<th>消費税</th>
-						<th>適用開始日</th>
-						<th>適用終了日</th>
+				<table class="list-table">
+					<tr class="list-table">
+						<th class="list-table">消費税</th>
+						<th class="list-table">適用開始日</th>
+						<th class="list-table">適用終了日</th>
 					</tr>
 
 <%
 				for (int i = 0; i < consumptionTaxesList.size(); i++) {
 %>
-					<tr>
-						<td><%= consumptionTaxesList.get(i).getTaxRate() %></td>
-						<td><%= consumptionTaxesList.get(i).getStartDay() %></td>
-						<td><%= consumptionTaxesList.get(i).getEndDay() %></td>
+					<tr class="list-table">
+						<td class="list-table"><%= consumptionTaxesList.get(i).getTaxRate() %></td>
+						<td class="list-table"><%= consumptionTaxesList.get(i).getStartDay() %></td>
+						<td class="list-table"><%= consumptionTaxesList.get(i).getEndDay() %></td>
 					</tr>
 <%
 				}
