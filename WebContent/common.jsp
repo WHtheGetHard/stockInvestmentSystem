@@ -6,6 +6,10 @@
 
 
 	<header>
+<%
+		UserInformation userInformation = new UserInformation();
+		userInformation = (UserInformation) session.getAttribute("userInformation");
+%>
 		<h1>株式投資システム</h1>
 
 		<nav>
@@ -31,10 +35,30 @@
 					情報登録
 					<ul class="child" data-contents="info-regist" style="display: none">
 						<li class="child">
+						<%
+							if (userInformation != null) {
+						%>
 							<a href="./tradingCost.jsp">売買関連費用</a>
+						<%
+							} else {
+						%>
+							売買関連費用
+						<%
+							}
+						%>
 						</li>
 						<li class="child">
+						<%
+							if (userInformation != null) {
+						%>
 							<a href="./companyInfoRegist.jsp">企業情報</a>
+						<%
+							} else {
+						%>
+							企業情報
+						<%
+							}
+						%>
 						</li>
 						<li class="child">保有株情報</li>
 					</ul>
@@ -55,9 +79,6 @@
 					ユーザ情報
 					<ul class="child" data-contents="user-info" style="display: none">
 						<%
-							UserInformation userInformation = new UserInformation();
-							userInformation = (UserInformation) session.getAttribute("userInformation");
-
 							if (userInformation == null) {
 						%>
 							<li class="child">
