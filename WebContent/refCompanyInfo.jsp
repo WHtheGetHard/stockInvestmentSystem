@@ -21,6 +21,8 @@
 
 			<input type="submit" value="選択">
 		</form>
+
+		<%@ include file="./contentsCompanyInfo.jsp" %>
 	</div>
 </body>
 </html>
