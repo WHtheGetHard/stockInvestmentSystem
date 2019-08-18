@@ -36,6 +36,7 @@ public class SearchCompanyInfo extends HttpServlet {
 		refCompanyInfoCondition.setSelectedSearchType(request.getParameter("selectedSearchType"));
 		refCompanyInfoCondition.setSearchWord(request.getParameter("searchWord"));
 
+
 		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
 
 		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
