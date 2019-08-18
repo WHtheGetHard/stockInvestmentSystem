@@ -21,15 +21,17 @@
 				<option value="3">上場市場</option>
 			</select>
 
-			<table>
-				<tr>
-					<td id="searchType"></td>
-					<td>
-						<input type="text" name="searchWord" autocomplete="off">
-					</td>
-				</tr>
-			</table>
-			<input type="submit" name="searchbutton" value="検索" disabled>
+			<div class="search-area" hidden>
+				<table>
+					<tr>
+						<td id="searchType"></td>
+						<td>
+							<input type="text" name="searchWord" autocomplete="off">
+						</td>
+					</tr>
+				</table>
+				<input type="submit" name="searchbutton" value="検索" disabled>
+			</div>
 		</form>
 
 		<%@ include file="./contentsCompanyInfo.jsp" %>
