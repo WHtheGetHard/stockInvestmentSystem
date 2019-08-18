@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="./common.jsp" %>
 	<div class="contents-area">
-		<form action="SearchTypeSelect" method="post">
+		<form action="SearchCompanyInfo" method="post">
 			検索方法を検索してください。<br>
 			<select name="selectedSearchType">
 				<option value=""></option>

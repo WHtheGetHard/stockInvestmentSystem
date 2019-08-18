@@ -2,24 +2,25 @@ package player;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fieldformat.RefCompanyInfoCondition;
+
 /**
- * Servlet implementation class SearchTypeSelect
+ * Servlet implementation class SearchCompanyInfo
  */
-@WebServlet("/SearchTypeSelect")
-public class SearchTypeSelect extends HttpServlet {
+@WebServlet("/SearchCompanyInfo")
+public class SearchCompanyInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchTypeSelect() {
+    public SearchCompanyInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +31,19 @@ public class SearchTypeSelect extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
-		String selectedSearchType = request.getParameter("selectedSearchType");
+		RefCompanyInfoCondition refCompanyInfoCondition = new RefCompanyInfoCondition();
 
-		request.setAttribute("selectedSearchType", selectedSearchType);
+		refCompanyInfoCondition.setSelectedSearchType(request.getParameter("selectedSearchType"));
+		refCompanyInfoCondition.setSearchWord(request.getParameter("searchWord"));
 
-		RequestDispatcher rd = request.getRequestDispatcher("refCompanyInfo.jsp");
-		rd.forward(request, response);
+		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+
+		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+
+		} else if ("3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+
+		}
+
 	}
 
 	/**
