@@ -1,27 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="fieldformat.CompanyStockBaseInfo"%>
+
 <%
-	String selectedSearchType = (String) request.getAttribute("selectedSearchType");
-	if (selectedSearchType != null) {
-		if ("1".equals(selectedSearchType)) {
+	ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
+	companyStockBaseInfoList = (ArrayList<CompanyStockBaseInfo>) request.getAttribute("companyStockBaseInfoList");
+
+	CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
+	companyStockBaseInfo = (CompanyStockBaseInfo) request.getAttribute("companyStockBaseInfo");
+
+	if (companyStockBaseInfoList != null) {
 %>
-			<p>検索したい会社名を入力してください。</p>
+		<table class="list-table">
+			<tr class="list-table">
+				<th class="list-table">会社名</th>
+				<th class="list-table">証券コード</th>
+				<th class="list-table">上場市場</th>
+			</tr>
 <%
-		} else if ("2".equals(selectedSearchType)) {
+			for (int i= 0; i < companyStockBaseInfoList.size(); i++) {
 %>
-			<p>検索したい証券コードを入力してください。</p>
+
+				<tr class="list-table">
+					<td class="list-table">
+						<%= companyStockBaseInfoList.get(i).getCompanyName() %>
+					</td>
+					<td class="list-table">
+						<%= companyStockBaseInfoList.get(i).getSecuritiesCode() %>
+					</td>
+					<td class="list-table">
+						<%= companyStockBaseInfoList.get(i).getMarket() %>
+					</td>
+				</tr>
+
+<%		} %>
+		</table>
 <%
-		} else if ("3".equals(selectedSearchType)) {
+	} else if (companyStockBaseInfo != null) {
 %>
-			<p>検索したい市場を入力してください。</p>
+		<table class="list-table">
+				<tr class="list-table">
+					<th class="list-table">会社名</th>
+					<th class="list-table">証券コード</th>
+					<th class="list-table">上場市場</th>
+				</tr>
+
+				<tr class="list-table">
+					<td class="list-table">
+						<%= companyStockBaseInfo.getCompanyName() %>
+					</td>
+					<td class="list-table">
+						<%= companyStockBaseInfo.getSecuritiesCode() %>
+					</td>
+					<td class="list-table">
+						<%= companyStockBaseInfo.getMarket() %>
+					</td>
+				</tr>
+		</table>
 <%
-		}
+	} else {
 %>
-		<form action="SearchCompanyInfo" method="post">
-			<input type="text" name="searchWord" autocomplete="off">
-			<input type="hidden" name="selectedSearchType" value="<%= selectedSearchType %>">
-			<input type="submit" value="検索">
-		</form>
+		条件に一致した企業はえられませんでした。
 <%
 	}
 %>

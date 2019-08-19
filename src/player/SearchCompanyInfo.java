@@ -1,14 +1,18 @@
 package player;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fieldformat.CompanyStockBaseInfo;
 import fieldformat.RefCompanyInfoCondition;
+import flayer.ExecSearchCompanyInfo;
 
 /**
  * Servlet implementation class SearchCompanyInfo
@@ -36,14 +40,31 @@ public class SearchCompanyInfo extends HttpServlet {
 		refCompanyInfoCondition.setSelectedSearchType(request.getParameter("selectedSearchType"));
 		refCompanyInfoCondition.setSearchWord(request.getParameter("searchWord"));
 
+		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
+		CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
+
+		ExecSearchCompanyInfo execSearchCompanyInfo =  new ExecSearchCompanyInfo();
 
 		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
 
+			companyStockBaseInfoList = execSearchCompanyInfo.searchFromName(refCompanyInfoCondition.getSearchWord());
+
 		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+
+			companyStockBaseInfo = execSearchCompanyInfo.searchFromSecuritiesCode(refCompanyInfoCondition.getSearchWord());
 
 		} else if ("3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
 
+			companyStockBaseInfoList = execSearchCompanyInfo.searchFromMarket(refCompanyInfoCondition.getSearchWord());
+
 		}
+
+		request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
+		request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
+
+		RequestDispatcher rd = request.getRequestDispatcher("refCompanyInfo.jsp");
+
+		rd.forward(request, response);
 
 	}
 
