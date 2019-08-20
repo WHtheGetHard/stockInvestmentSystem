@@ -118,9 +118,11 @@
 				<strong class="wrong"><%= messageAreaDisplayContents.getMessage() %></strong>
 <%
 			} else {
+				if (messageAreaDisplayContents.getMessage() != null) {
 %>
-				<strong class="okay"><%= messageAreaDisplayContents.getMessage() %></strong>
+					<strong class="okay"><%= messageAreaDisplayContents.getMessage() %></strong>
 <%
+				}
 			}
 		}
 %>
