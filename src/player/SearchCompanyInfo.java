@@ -74,6 +74,7 @@ public class SearchCompanyInfo extends HttpServlet {
 			}
 		}
 
+		request.setAttribute("refCompanyInfoCondition",refCompanyInfoCondition);
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
 		request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
 		request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);

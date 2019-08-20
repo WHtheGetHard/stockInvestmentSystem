@@ -3,6 +3,34 @@
 
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="fieldformat.CompanyStockBaseInfo"%>
+<%@ page import="fieldformat.RefCompanyInfoCondition" %>
+
+<%
+	RefCompanyInfoCondition refCompanyInfoCondition = new RefCompanyInfoCondition();
+	refCompanyInfoCondition = (RefCompanyInfoCondition) request.getAttribute("refCompanyInfoCondition");
+
+	if (refCompanyInfoCondition != null) {
+
+		String searchTypeString = null;
+		if (refCompanyInfoCondition.getSearchWord() != null) {
+			if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+				searchTypeString = "会社名";
+			} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+				searchTypeString = "証券コード";
+			} else if ("3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+				searchTypeString = "上場市場";
+			}
+%>
+			<div class="searchConditionArea">
+				検索方法：<%= searchTypeString %>, 検索条件：<%= refCompanyInfoCondition.getSearchWord() %>
+			</div>
+<%
+		}
+	}
+%>
+
+
+
 
 <%
 	ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
