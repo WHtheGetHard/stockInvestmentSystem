@@ -68,7 +68,7 @@ public class SearchCompanyInfo extends HttpServlet {
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
 			}
 		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
-			if (companyStockBaseInfo == null) {
+			if (companyStockBaseInfo.getCompanyName() == null) {
 				messageAreaDisplayContents.setError(true);
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
 			}
