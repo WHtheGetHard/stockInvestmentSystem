@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fieldformat.CompanyStockBaseInfo;
+import fieldformat.MessageAreaDisplayContents;
 import fieldformat.RefCompanyInfoCondition;
 import flayer.ExecSearchCompanyInfo;
 
@@ -59,6 +60,21 @@ public class SearchCompanyInfo extends HttpServlet {
 
 		}
 
+		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
+
+		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType()) || "3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+			if (companyStockBaseInfoList.size() == 0) {
+				messageAreaDisplayContents.setError(true);
+				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
+			}
+		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+			if (companyStockBaseInfo == null) {
+				messageAreaDisplayContents.setError(true);
+				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
+			}
+		}
+
+		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
 		request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
 		request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
 
