@@ -12,6 +12,7 @@
 	companyStockBaseInfo = (CompanyStockBaseInfo) request.getAttribute("companyStockBaseInfo");
 
 	if (companyStockBaseInfoList != null) {
+		if (companyStockBaseInfoList.size() > 0) {
 %>
 		<table class="list-table">
 			<tr class="list-table">
@@ -35,10 +36,14 @@
 					</td>
 				</tr>
 
-<%		} %>
+<%
+			}
+		}
+%>
 		</table>
 <%
 	} else if (companyStockBaseInfo != null) {
+		if (companyStockBaseInfo.getCompanyName() != null) {
 %>
 		<table class="list-table">
 				<tr class="list-table">
@@ -60,5 +65,6 @@
 				</tr>
 		</table>
 <%
+		}
 	}
 %>
