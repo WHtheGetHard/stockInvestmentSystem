@@ -9,11 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import fieldformat.CompanyDetails;
 import fieldformat.CompanyStockBaseInfo;
 import fieldformat.MessageAreaDisplayContents;
 import fieldformat.RefCompanyInfoCondition;
 import flayer.ExecSearchCompanyInfo;
+import flayer.GatherCompanyDetails;
 
 /**
  * Servlet implementation class SearchCompanyInfo
@@ -73,6 +76,13 @@ public class SearchCompanyInfo extends HttpServlet {
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
 			}
 		}
+
+		ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
+		GatherCompanyDetails gatherCompanyDetails = new GatherCompanyDetails();
+		companyDetailsList = gatherCompanyDetails.execGather(companyStockBaseInfoList);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("companyDetailsList", companyDetailsList);
 
 		request.setAttribute("refCompanyInfoCondition",refCompanyInfoCondition);
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);

@@ -47,7 +47,9 @@
 				<th class="list-table">会社名</th>
 				<th class="list-table">証券コード</th>
 				<th class="list-table">上場市場</th>
+				<th class="list-table">詳細</th>
 			</tr>
+
 <%
 			for (int i= 0; i < companyStockBaseInfoList.size(); i++) {
 %>
@@ -61,6 +63,9 @@
 					</td>
 					<td class="list-table">
 						<%= companyStockBaseInfoList.get(i).getMarket() %>
+					</td>
+					<td class="list-table">
+						<input type="button" value="詳細" name="<%=  i %>">
 					</td>
 				</tr>
 
@@ -78,6 +83,7 @@
 					<th class="list-table">会社名</th>
 					<th class="list-table">証券コード</th>
 					<th class="list-table">上場市場</th>
+					<th class="list-table">詳細</th>
 				</tr>
 
 				<tr class="list-table">
@@ -90,9 +96,14 @@
 					<td class="list-table">
 						<%= companyStockBaseInfo.getMarket() %>
 					</td>
+					<td class="list-table">
+						<input type="submit" value="詳細">
+					</td>
 				</tr>
 		</table>
 <%
 		}
 	}
 %>
+
+<script type="text/javascript" src="./js/show-company-detail.js"></script>
