@@ -7,6 +7,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/common-style.css">
 <title>企業情報詳細</title>
 </head>
 <body>
@@ -20,7 +21,49 @@
 	if (companyDetailsList != null) {
 		if (companyDetailsList.size() > 0) {
 %>
+			<%= companyDetailsList.get(listIndex).getCompanyName() %>の損益計算書(単位[100万円])
+			<table class="list-table">
+				<tr class="list-table">
+					<th class="list-table">項目名</th>
+					<th class="list-table">最新</th>
+					<th class="list-table">業界平均</th>
+				<tr>
 
+				<tr class="list-table">
+					<td class="list-table">売上高</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getAmountOfSales() %></td>
+					<td class="list-table"></td>
+				</tr>
+
+				<tr class="list-table">
+					<td class="list-table">売上総利益</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getGrossProfit() %></td>
+					<td class="list-table"></td>
+				</tr>
+
+				<tr class="list-table">
+					<td class="list-table">営業利益</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getOperatingIncome() %></td>
+					<td class="list-table"></td>
+				</tr>
+
+				<tr class="list-table">
+					<td class="list-table">経営利益</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getManagementProfit() %></td>
+					<td class="list-table"></td>
+				</tr>
+
+				<tr class="list-table">
+					<td class="list-table">税引前当期純利益</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncomeBeforeTax() %></td>
+					<td class="list-table"></td>
+
+				<tr  class="list-table">
+					<td class="list-table">当期純利益</td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncome() %></td>
+					<td class="list-table"></td>
+				</tr>
+			</table>
 <%
 		}
 	}
