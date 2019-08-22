@@ -32,38 +32,39 @@
 				<tr class="list-table">
 					<td class="list-table">売上高</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getAmountOfSales() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getAmoutOfSales_fieldMeans() %></td>
 				</tr>
 
 				<tr class="list-table">
 					<td class="list-table">売上総利益</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getGrossProfit() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getGrossProfit_fieldMeans() %></td>
 				</tr>
 
 				<tr class="list-table">
 					<td class="list-table">営業利益</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getOperatingIncome() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getOperatingIncome_fieldMeans() %></td>
 				</tr>
 
 				<tr class="list-table">
 					<td class="list-table">経営利益</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getManagementProfit() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getManagementProfit_fieldMeans() %></td>
 				</tr>
 
 				<tr class="list-table">
 					<td class="list-table">税引前当期純利益</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncomeBeforeTax() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncomeBeforeTax_fieldMeans() %></td>
 
 				<tr  class="list-table">
 					<td class="list-table">当期純利益</td>
 					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncome() %></td>
-					<td class="list-table"></td>
+					<td class="list-table"><%= companyDetailsList.get(listIndex).getNetIncome_fieldMeans() %></td>
 				</tr>
 			</table>
+			<strong>※()書きはマイナスを表す</strong>
 <%
 		}
 	}

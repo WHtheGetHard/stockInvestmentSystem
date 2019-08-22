@@ -89,7 +89,7 @@ public class GatherCompanyDetails {
 		Pattern p3 = Pattern.compile(regex3);
 		Matcher m3;
 
-		String regex4 = "";
+		String regex4 = "<td>経営利益</td>";
 		int regex4Index = 0;
 		Pattern p4 = Pattern.compile(regex4);
 		Matcher m4;
@@ -107,69 +107,81 @@ public class GatherCompanyDetails {
 		for (int i = startIndex; i < endIndex; i++) {
 			m1 = p1.matcher(splitInputArg[i]);
 			if (m1.find()) {
-				regex1Index = i + 4;
+				regex1Index = i;
 			}
 
 			m2 = p2.matcher(splitInputArg[i]);
 			if (m2.find()) {
-				regex2Index = i + 4;
+				regex2Index = i;
 			}
 
 			m3 = p3.matcher(splitInputArg[i]);
 			if (m3.find()) {
-				regex3Index = i + 4;
+				regex3Index = i;
 			}
 
 			m4 = p4.matcher(splitInputArg[i]);
 			if (m4.find()) {
-				regex4Index = i + 4;
+				regex4Index = i;
 			}
 
 			m5 = p5.matcher(splitInputArg[i]);
 			if (m5.find()) {
-				regex5Index = i + 4;
+				regex5Index = i;
 			}
 
 			m6 = p6.matcher(splitInputArg[i]);
 			if (m6.find()) {
-				regex6Index = i + 4;
+				regex6Index = i;
 			}
 		}
 
-		if (regex1Index > 4) {
-			companyDetails.setAmountOfSales(splitInputArg[regex1Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex1Index <= 4) {
+		if (regex1Index > 0) {
+			companyDetails.setAmountOfSales(splitInputArg[regex1Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setAmoutOfSales_fieldMeans(splitInputArg[regex1Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex1Index == 0) {
 			companyDetails.setAmountOfSales("NA");
+			companyDetails.setAmoutOfSales_fieldMeans("NA");
 		}
 
-		if (regex2Index > 4) {
-			companyDetails.setGrossProfit(splitInputArg[regex2Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex2Index <= 4) {
+		if (regex2Index > 0) {
+			companyDetails.setGrossProfit(splitInputArg[regex2Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setGrossProfit_fieldMeans(splitInputArg[regex2Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex2Index == 0) {
 			companyDetails.setGrossProfit("NA");
+			companyDetails.setGrossProfit_fieldMeans("NA");
 		}
 
-		if (regex3Index > 4) {
-			companyDetails.setOperatingIncome(splitInputArg[regex3Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex3Index <= 4) {
+		if (regex3Index > 0) {
+			companyDetails.setOperatingIncome(splitInputArg[regex3Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setOperatingIncome_fieldMeans(splitInputArg[regex3Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex3Index == 0) {
 			companyDetails.setOperatingIncome("NA");
+			companyDetails.setOperatingIncome_fieldMeans("NA");
 		}
 
-		if (regex4Index > 4) {
-			companyDetails.setManagementProfit(splitInputArg[regex4Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex4Index <= 4) {
+		if (regex4Index > 0) {
+			companyDetails.setManagementProfit(splitInputArg[regex4Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setManagementProfit_fieldMeans(splitInputArg[regex4Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex4Index == 0) {
 			companyDetails.setManagementProfit("NA");
+			companyDetails.setManagementProfit_fieldMeans("NA");
 		}
 
-		if (regex5Index > 4) {
-			companyDetails.setNetIncomeBeforeTax(splitInputArg[regex5Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex5Index <= 4) {
+		if (regex5Index > 0) {
+			companyDetails.setNetIncomeBeforeTax(splitInputArg[regex5Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setNetIncomeBeforeTax_fieldMeans(splitInputArg[regex5Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex5Index == 0) {
 			companyDetails.setNetIncomeBeforeTax("NA");
+			companyDetails.setNetIncomeBeforeTax_fieldMeans("NA");
 		}
 
-		if (regex6Index > 4) {
-			companyDetails.setNetIncome(splitInputArg[regex6Index].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
-		} else if (regex6Index <= 4) {
+		if (regex6Index > 0) {
+			companyDetails.setNetIncome(splitInputArg[regex6Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+			companyDetails.setNetIncome_fieldMeans(splitInputArg[regex6Index + 5].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));
+		} else if (regex6Index == 0) {
 			companyDetails.setNetIncome("NA");
+			companyDetails.setNetIncome_fieldMeans("NA");
 		}
 
 		return companyDetails;
