@@ -3,6 +3,8 @@ package fieldformat;
 public class CompanyDetails {
 	private String companyName;
 
+	private String targetDate;
+
 	private String amountOfSales;
 
 	private String grossProfit;
@@ -129,6 +131,14 @@ public class CompanyDetails {
 
 	public void setNetIncome_fieldMeans(String netIncome_fieldMeans) {
 		this.netIncome_fieldMeans = netIncome_fieldMeans;
+	}
+
+	public String getTargetDate() {
+		return targetDate;
+	}
+
+	public void setTargetDate(String targetDate) {
+		this.targetDate = targetDate;
 	}
 
 

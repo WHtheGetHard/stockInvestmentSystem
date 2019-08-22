@@ -73,7 +73,6 @@ public class GatherCompanyDetails {
 				endIndex = i;
 			}
 		}
-
 		String regex1 = "<td>売上高</td>";
 		int regex1Index = 0;
 		Pattern p1 = Pattern.compile(regex1);
@@ -135,6 +134,10 @@ public class GatherCompanyDetails {
 				regex6Index = i;
 			}
 		}
+
+
+		companyDetails.setTargetDate(splitInputArg[startIndex + 4].replaceAll("<th class=\"data\">", "").replaceAll("</th>",""));
+
 
 		if (regex1Index > 0) {
 			companyDetails.setAmountOfSales(splitInputArg[regex1Index + 4].replaceAll("<td class=\"data\">", "").replaceAll("</td>",""));

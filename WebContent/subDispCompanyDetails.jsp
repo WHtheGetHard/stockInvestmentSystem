@@ -21,7 +21,7 @@
 	if (companyDetailsList != null) {
 		if (companyDetailsList.size() > 0) {
 %>
-			<%= companyDetailsList.get(listIndex).getCompanyName() %>の損益計算書(単位[100万円])
+			<%= companyDetailsList.get(listIndex).getTargetDate() %>期の<%= companyDetailsList.get(listIndex).getCompanyName() %>の損益計算書(単位[100万円])
 			<table class="list-table">
 				<tr class="list-table">
 					<th class="list-table">項目名</th>
