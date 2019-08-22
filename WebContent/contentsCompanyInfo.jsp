@@ -39,69 +39,79 @@
 	CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
 	companyStockBaseInfo = (CompanyStockBaseInfo) request.getAttribute("companyStockBaseInfo");
 
-	if (companyStockBaseInfoList != null) {
-		if (companyStockBaseInfoList.size() > 0) {
+	String searchType = (String) request.getAttribute("searchType");
+
+	if (searchType != null) {
+		if ("1".equals(searchType) || "3".equals(searchType)) {
+			if (companyStockBaseInfoList != null) {
+				if (companyStockBaseInfoList.size() > 0) {
 %>
-		<table class="list-table">
-			<tr class="list-table">
-				<th class="list-table">会社名</th>
-				<th class="list-table">証券コード</th>
-				<th class="list-table">上場市場</th>
-				<th class="list-table">詳細</th>
-			</tr>
+					<table class="list-table">
+						<tr class="list-table">
+							<th class="list-table">会社名</th>
+							<th class="list-table">証券コード</th>
+							<th class="list-table">上場市場</th>
+							<th class="list-table">詳細</th>
+						</tr>
 
 <%
-			for (int i= 0; i < companyStockBaseInfoList.size(); i++) {
+					for (int i= 0; i < companyStockBaseInfoList.size(); i++) {
 %>
 
-				<tr class="list-table">
-					<td class="list-table">
-						<%= companyStockBaseInfoList.get(i).getCompanyName() %>
-					</td>
-					<td class="list-table">
-						<%= companyStockBaseInfoList.get(i).getSecuritiesCode() %>
-					</td>
-					<td class="list-table">
-						<%= companyStockBaseInfoList.get(i).getMarket() %>
-					</td>
-					<td class="list-table">
-						<input type="button" value="詳細" name="<%=  i %>">
-					</td>
-				</tr>
-
+						<tr class="list-table">
+							<td class="list-table">
+								<%= companyStockBaseInfoList.get(i).getCompanyName() %>
+							</td>
+							<td class="list-table">
+								<%= companyStockBaseInfoList.get(i).getSecuritiesCode() %>
+							</td>
+							<td class="list-table">
+								<%= companyStockBaseInfoList.get(i).getMarket() %>
+							</td>
+							<td class="list-table">
+								<input type="button" value="詳細" name="<%=  i %>">
+							</td>
+						</tr>
 <%
+					}
+%>
+					</table>
+<%
+				}
 			}
-		}
 %>
-		</table>
-<%
-	} else if (companyStockBaseInfo != null) {
-		if (companyStockBaseInfo.getCompanyName() != null) {
-%>
-		<table class="list-table">
-				<tr class="list-table">
-					<th class="list-table">会社名</th>
-					<th class="list-table">証券コード</th>
-					<th class="list-table">上場市場</th>
-					<th class="list-table">詳細</th>
-				</tr>
 
-				<tr class="list-table">
-					<td class="list-table">
-						<%= companyStockBaseInfo.getCompanyName() %>
-					</td>
-					<td class="list-table">
-						<%= companyStockBaseInfo.getSecuritiesCode() %>
-					</td>
-					<td class="list-table">
-						<%= companyStockBaseInfo.getMarket() %>
-					</td>
-					<td class="list-table">
-						<input type="submit" value="詳細">
-					</td>
-				</tr>
-		</table>
 <%
+		} else if ("2".equals(searchType)) {
+			if (companyStockBaseInfo != null) {
+				if (companyStockBaseInfo.getCompanyName() != null) {
+%>
+					<table class="list-table">
+						<tr class="list-table">
+							<th class="list-table">会社名</th>
+							<th class="list-table">証券コード</th>
+							<th class="list-table">上場市場</th>
+							<th class="list-table">詳細</th>
+						</tr>
+
+						<tr class="list-table">
+							<td class="list-table">
+								<%= companyStockBaseInfo.getCompanyName() %>
+							</td>
+							<td class="list-table">
+								<%= companyStockBaseInfo.getSecuritiesCode() %>
+							</td>
+							<td class="list-table">
+								<%= companyStockBaseInfo.getMarket() %>
+							</td>
+							<td class="list-table">
+								<input type="button" value="詳細">
+							</td>
+						</tr>
+				</table>
+<%
+				}
+			}
 		}
 	}
 %>

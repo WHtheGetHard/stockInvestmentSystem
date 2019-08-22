@@ -69,11 +69,13 @@ public class SearchCompanyInfo extends HttpServlet {
 			if (companyStockBaseInfoList.size() == 0) {
 				messageAreaDisplayContents.setError(true);
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
+
 			}
 		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
 			if (companyStockBaseInfo.getCompanyName() == null) {
 				messageAreaDisplayContents.setError(true);
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
+
 			}
 		}
 
@@ -84,6 +86,7 @@ public class SearchCompanyInfo extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("companyDetailsList", companyDetailsList);
 
+		request.setAttribute("searchType",refCompanyInfoCondition.getSelectedSearchType());
 		request.setAttribute("refCompanyInfoCondition",refCompanyInfoCondition);
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
 		request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
