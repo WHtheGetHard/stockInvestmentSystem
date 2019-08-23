@@ -105,7 +105,7 @@
 								<%= companyStockBaseInfo.getMarket() %>
 							</td>
 							<td class="list-table">
-								<input type="button" value="詳細">
+								<input type="button" value="詳細" name="-1">
 							</td>
 						</tr>
 				</table>

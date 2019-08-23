@@ -11,6 +11,7 @@ import fieldformat.CompanyStockBaseInfo;
 
 public class GatherCompanyDetails {
 	private ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
+	CompanyDetails companyDetails = new CompanyDetails();
 
 	public ArrayList<CompanyDetails> execGather(ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList) {
 		SearchWebPage searchWebPage = new SearchWebPage();
@@ -37,6 +38,31 @@ public class GatherCompanyDetails {
 		}
 
 		return this.companyDetailsList;
+	}
+
+	public CompanyDetails execGatherUnit(CompanyStockBaseInfo companyStockBaseInfo) {
+		SearchWebPage searchWebPage = new SearchWebPage();
+
+		if (companyStockBaseInfo.getCompanyName() != null) {
+			String url = createTargetWebUrl(companyStockBaseInfo);
+
+			String article = "";
+
+			try {
+				article = searchWebPage.search(url);
+			} catch (MalformedURLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+
+			this.companyDetails = extractElement(article);
+			this.companyDetails.setCompanyName(companyStockBaseInfo.getCompanyName());
+		}
+
+		return this.companyDetails;
 	}
 
 	public String createTargetWebUrl(CompanyStockBaseInfo companyStockBaseInfo) {

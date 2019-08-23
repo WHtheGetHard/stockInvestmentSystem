@@ -80,11 +80,17 @@ public class SearchCompanyInfo extends HttpServlet {
 		}
 
 		ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
-		GatherCompanyDetails gatherCompanyDetails = new GatherCompanyDetails();
-		companyDetailsList = gatherCompanyDetails.execGather(companyStockBaseInfoList);
+		GatherCompanyDetails gatherCompanyDetailsList = new GatherCompanyDetails();
+		companyDetailsList = gatherCompanyDetailsList.execGather(companyStockBaseInfoList);
+
+
+		CompanyDetails companyDetails = new CompanyDetails();
+		GatherCompanyDetails gatherCompanyDetailsUnit = new GatherCompanyDetails();
+		companyDetails = gatherCompanyDetailsUnit.execGatherUnit(companyStockBaseInfo);
 
 		HttpSession session = request.getSession();
 		session.setAttribute("companyDetailsList", companyDetailsList);
+		session.setAttribute("companyDetails", companyDetails);
 
 		request.setAttribute("searchType",refCompanyInfoCondition.getSelectedSearchType());
 		request.setAttribute("refCompanyInfoCondition",refCompanyInfoCondition);
