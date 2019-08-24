@@ -44,59 +44,60 @@ public class SearchCompanyInfo extends HttpServlet {
 		refCompanyInfoCondition.setSelectedSearchType(request.getParameter("selectedSearchType"));
 		refCompanyInfoCondition.setSearchWord(request.getParameter("searchWord"));
 
-		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
-		CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
-
 		ExecSearchCompanyInfo execSearchCompanyInfo =  new ExecSearchCompanyInfo();
-
-		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
-
-			companyStockBaseInfoList = execSearchCompanyInfo.searchFromName(refCompanyInfoCondition.getSearchWord());
-
-		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
-
-			companyStockBaseInfo = execSearchCompanyInfo.searchFromSecuritiesCode(refCompanyInfoCondition.getSearchWord());
-
-		} else if ("3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
-
-			companyStockBaseInfoList = execSearchCompanyInfo.searchFromMarket(refCompanyInfoCondition.getSearchWord());
-
-		}
-
 		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
 
-		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType()) || "3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType()) || "3".equals(refCompanyInfoCondition.getSelectedSearchType()) ) {
+			ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
+			ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
+
+			if ("1".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+				companyStockBaseInfoList = execSearchCompanyInfo.searchFromName(refCompanyInfoCondition.getSearchWord());
+			} else if ("3".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+				companyStockBaseInfoList = execSearchCompanyInfo.searchFromMarket(refCompanyInfoCondition.getSearchWord());
+			}
+
+
 			if (companyStockBaseInfoList.size() == 0) {
 				messageAreaDisplayContents.setError(true);
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
 
+			} else {
+
+				GatherCompanyDetails gatherCompanyDetailsList = new GatherCompanyDetails();
+				companyDetailsList = gatherCompanyDetailsList.execGather(companyStockBaseInfoList);
 			}
+
+			HttpSession session = request.getSession();
+			session.setAttribute("companyDetailsList", companyDetailsList);
+
+			request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
+
 		} else if ("2".equals(refCompanyInfoCondition.getSelectedSearchType())) {
+			CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
+
+			companyStockBaseInfo = execSearchCompanyInfo.searchFromSecuritiesCode(refCompanyInfoCondition.getSearchWord());
+
+			CompanyDetails companyDetails = new CompanyDetails();
+
 			if (companyStockBaseInfo.getCompanyName() == null) {
 				messageAreaDisplayContents.setError(true);
 				messageAreaDisplayContents.setMessage("検索条件に合致するデータは存在しません。");
 
+			} else {
+
+				GatherCompanyDetails gatherCompanyDetailsUnit = new GatherCompanyDetails();
+				companyDetails = gatherCompanyDetailsUnit.execGatherUnit(companyStockBaseInfo);
 			}
+
+			HttpSession session = request.getSession();
+			session.setAttribute("companyDetails", companyDetails);
+
+			request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
 		}
 
-		ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
-		GatherCompanyDetails gatherCompanyDetailsList = new GatherCompanyDetails();
-		companyDetailsList = gatherCompanyDetailsList.execGather(companyStockBaseInfoList);
-
-
-		CompanyDetails companyDetails = new CompanyDetails();
-		GatherCompanyDetails gatherCompanyDetailsUnit = new GatherCompanyDetails();
-		companyDetails = gatherCompanyDetailsUnit.execGatherUnit(companyStockBaseInfo);
-
-		HttpSession session = request.getSession();
-		session.setAttribute("companyDetailsList", companyDetailsList);
-		session.setAttribute("companyDetails", companyDetails);
-
-		request.setAttribute("searchType",refCompanyInfoCondition.getSelectedSearchType());
 		request.setAttribute("refCompanyInfoCondition",refCompanyInfoCondition);
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
-		request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
-		request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
 
 		RequestDispatcher rd = request.getRequestDispatcher("refCompanyInfo.jsp");
 
