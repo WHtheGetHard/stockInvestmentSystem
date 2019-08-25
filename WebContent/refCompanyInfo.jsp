@@ -34,7 +34,9 @@
 			</div>
 		</form>
 
-		<%@ include file="./contentsCompanyInfo.jsp" %>
+		<div id="contents-area">
+			<%@ include file="./contentsCompanyInfo.jsp" %>
+		</div>
 	</div>
 
 	<script type="text/javascript" src="./js/input-check-common-handling.js"></script>

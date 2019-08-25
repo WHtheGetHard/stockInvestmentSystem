@@ -1,5 +1,7 @@
 //　プルダウンリストが変更されたときの処理
 $('select[name="selectedSearchType"]').on('change', function() {
+	$('div#contents-area').remove();
+
 	var selectedVal = $(this).val();
 
 	let isValidValue = confirmSelect(selectedVal);
