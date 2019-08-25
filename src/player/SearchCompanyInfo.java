@@ -47,6 +47,11 @@ public class SearchCompanyInfo extends HttpServlet {
 		ExecSearchCompanyInfo execSearchCompanyInfo =  new ExecSearchCompanyInfo();
 		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
 
+		HttpSession session = request.getSession(false);
+		session.removeAttribute("companyDetailsList");
+		session.removeAttribute("companyDetails");
+
+
 		if ("1".equals(refCompanyInfoCondition.getSelectedSearchType()) || "3".equals(refCompanyInfoCondition.getSelectedSearchType()) ) {
 			ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
 			ArrayList<CompanyDetails> companyDetailsList = new ArrayList<CompanyDetails>();
@@ -68,7 +73,7 @@ public class SearchCompanyInfo extends HttpServlet {
 				companyDetailsList = gatherCompanyDetailsList.execGather(companyStockBaseInfoList);
 			}
 
-			HttpSession session = request.getSession();
+			session = request.getSession();
 			session.setAttribute("companyDetailsList", companyDetailsList);
 
 			request.setAttribute("companyStockBaseInfoList", companyStockBaseInfoList);
@@ -90,7 +95,7 @@ public class SearchCompanyInfo extends HttpServlet {
 				companyDetails = gatherCompanyDetailsUnit.execGatherUnit(companyStockBaseInfo);
 			}
 
-			HttpSession session = request.getSession();
+			session = request.getSession();
 			session.setAttribute("companyDetails", companyDetails);
 
 			request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
