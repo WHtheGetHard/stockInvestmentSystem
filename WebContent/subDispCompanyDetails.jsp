@@ -21,7 +21,7 @@
 	CompanyDetails companyDetails = new CompanyDetails();
 	companyDetails = (CompanyDetails) session.getAttribute("companyDetails");
 
-	if (companyDetailsList != null && listIndex > 0) {
+	if (companyDetailsList != null && listIndex >= 0) {
 		if (companyDetailsList.size() > 0) {
 %>
 			<%= companyDetailsList.get(listIndex).getTargetDate() %>期の<%= companyDetailsList.get(listIndex).getCompanyName() %>の損益計算書(単位[100万円])
