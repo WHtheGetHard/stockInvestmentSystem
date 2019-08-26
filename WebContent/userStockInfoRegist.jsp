@@ -28,6 +28,8 @@
 				</tr>
 			</table>
 		</form>
+
+		<%@ include file="./userStockInfoRegistContents.jsp"%>
 	</div>
 </body>
 </html>
