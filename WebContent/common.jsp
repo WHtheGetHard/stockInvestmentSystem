@@ -60,7 +60,19 @@
 							}
 						%>
 						</li>
-						<li class="child">保有株情報</li>
+						<li class="child">
+						<%
+							if (userInformation != null) {
+						%>
+							<a href="./userStockInfoRegist.jsp">保有株情報</a>
+						<%
+							} else {
+						%>
+							保有株情報
+						<%
+							}
+						%>
+						</li>
 					</ul>
 				</li>
 
