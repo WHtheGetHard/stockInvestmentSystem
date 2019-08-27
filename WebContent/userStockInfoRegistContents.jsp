@@ -11,22 +11,29 @@
 	if (companyStockBaseInfoList != null) {
 		if (companyStockBaseInfoList.size() > 0) {
 %>
-			<table class="list-table">
-				<tr class="list-table">
-					<td class="list-table">会社名</td>
-				</tr>
-<%
-				for (int i = 0; i < companyStockBaseInfoList.size(); i++) {
-%>
+			<form action="MoveToRegistPage" method="post">
+				<table class="list-table">
 					<tr class="list-table">
-						<td class="list-table">
-							<%= companyStockBaseInfoList.get(i).getCompanyName() %>
-						</td>
+						<td class="list-table">会社名</td>
+						<td class="list-table">選択</td>
 					</tr>
+<%
+					for (int i = 0; i < companyStockBaseInfoList.size(); i++) {
+%>
+						<tr class="list-table">
+							<td class="list-table">
+								<%= companyStockBaseInfoList.get(i).getCompanyName() %>
+							</td>
+							<td class="list-table">
+								<input type="radio" name="targetSecuritiesCode" value="<%= companyStockBaseInfoList.get(i).getSecuritiesCode() %>">
+							</td>
+						</tr>
 <%
 				}
 %>
-			</table>
+				</table>
+				<input type="submit" value="決定">
+			</form>
 <%
 		}
 %>
