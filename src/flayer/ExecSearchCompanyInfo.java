@@ -86,6 +86,26 @@ public class ExecSearchCompanyInfo {
 		return companyStockBaseInfo;
 	}
 
+	public int getIdFromSecuritiesCode(String securitiesCode) {
+		int id = 0;
+
+		SelectStcokBaseInfo selectStcokBaseInfo = new SelectStcokBaseInfo();
+		StockBaseInfo stockBaseInfo = new StockBaseInfo();
+
+		try {
+			stockBaseInfo = selectStcokBaseInfo.selectFromSecuritiesCode(securitiesCode);
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		if (stockBaseInfo.getId() > 0) {
+			id = stockBaseInfo.getId();
+		}
+
+		return id;
+	}
+
 	public ArrayList<CompanyStockBaseInfo> searchFromMarket(String market) {
 		ArrayList<CompanyStockBaseInfo> companyStockBaseInfoList = new ArrayList<CompanyStockBaseInfo>();
 

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fieldformat.Companies;
 import fieldformat.CompanyStockBaseInfo;
 import flayer.ExecSearchCompanyInfo;
 
@@ -40,7 +41,12 @@ public class MoveToRegistPage extends HttpServlet {
 
 		companyStockBaseInfo = execSearchCompanyInfo.searchFromSecuritiesCode(targetSecuritiesCode);
 
+		Companies companies = new Companies();
+		companies.setId(execSearchCompanyInfo.getIdFromSecuritiesCode(companyStockBaseInfo.getSecuritiesCode()));
+		companies.setName(companyStockBaseInfo.getCompanyName());
+
 		request.setAttribute("companyStockBaseInfo", companyStockBaseInfo);
+		request.setAttribute("companies", companies);
 
 		RequestDispatcher rd = request.getRequestDispatcher("inputUserStockInfo.jsp");
 
