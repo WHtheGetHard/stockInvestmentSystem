@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="fieldformat.CompanyStockBaseInfo " %>
+<%@ page import="fieldformat.Companies" %>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -19,13 +21,17 @@
 <%
 		CompanyStockBaseInfo companyStockBaseInfo = new CompanyStockBaseInfo();
 		companyStockBaseInfo = (CompanyStockBaseInfo) request.getAttribute("companyStockBaseInfo");
-		if (companyStockBaseInfo != null) {
-			if (companyStockBaseInfo.getCompanyName() != null) {
+
+		Companies companies = new Companies();
+		companies = (Companies) request.getAttribute("companies");
+
+		if (companyStockBaseInfo != null && companies != null && userInformation != null) {
+			if (companyStockBaseInfo.getCompanyName() != null && companies.getId() > 0 && userInformation.getUserId() > 0) {
 %>
 				<p><%= companyStockBaseInfo.getCompanyName() %>について以下の情報を入力してください。</p>
 				<form action="RegistUserStockInfo" method="post">
-					<input type="hidden" name="userId">
-					<input type="hidden" name="compId">
+					<input type="hidden" name="userId" value="<%= userInformation.getUserId() %>">
+					<input type="hidden" name="compId" value="<%= companies.getId() %>">
 					<table>
 						<tr>
 							<td>保有数</td>
