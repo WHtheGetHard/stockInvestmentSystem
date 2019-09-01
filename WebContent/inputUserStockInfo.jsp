@@ -32,35 +32,41 @@
 				<form action="RegistUserStockInfo" method="post">
 					<input type="hidden" name="userId" value="<%= userInformation.getUserId() %>">
 					<input type="hidden" name="compId" value="<%= companies.getId() %>">
-					<table>
-						<tr>
-							<td>保有数</td>
-							<td>
-								<input type="number" name="numStock">
-							</td>
-						</tr>
+					<div id="stockInfoInput">
+						<table>
+							<tr>
+								<td>保有数</td>
+								<td>
+									<input type="number" name="numStock" title="保有数">
+								</td>
+							</tr>
 
-						<tr>
-							<td>買値</td>
-							<td>
-								<input type="number" name="buyingPrice">
-							</td>
-						</tr>
+							<tr>
+								<td>買値</td>
+								<td>
+									<input type="number" name="buyingPrice" title="買値">
+								</td>
+							</tr>
 
-						<tr>
-							<td>売値</td>
-							<td>
-								<input type="number" name="sellingPrice">
-							</td>
-						</tr>
-					</table>
+							<tr>
+								<td>売値</td>
+								<td>
+									<input type="number" name="sellingPrice" title="売値">
+								</td>
+							</tr>
+						</table>
+					</div>
 
-					<input type="submit" value="登録">
+					<input type="submit" value="登録" disabled>
 				</form>
 <%
 			}
 		}
 %>
 	</div>
+
+	<script type="text/javascript" src="./js/input-check-common-handling.js"></script>
+	<script type="text/javascript" src="./js/user-stock-info-check.js"></script>
+
 </body>
 </html>
