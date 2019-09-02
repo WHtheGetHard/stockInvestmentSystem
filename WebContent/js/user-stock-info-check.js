@@ -1,3 +1,5 @@
+var conditions = {isSuitableInput : false, message : ''};
+
 $('input[type="number"]').blur(function() {
 	var $inputElement = $('#stockInfoInput').find('input');
 
@@ -11,8 +13,6 @@ $('input[type="number"]').blur(function() {
 });
 
 function appropriateInputCheck($inputElement) {
-	var conditions = {isSuitableInput : false, message : ''};
-
 	let isNumStockInputed = false;
 	let isBuyingPriceInputed = false;
 	let isSellingPrice = false;
@@ -50,3 +50,7 @@ function appropriateInputCheck($inputElement) {
 
 	return conditions;
 }
+
+$('img').on('click',function() {
+	instraction("inputUserStockInfo", !conditions.isSuitableInput, conditions.message);
+});
