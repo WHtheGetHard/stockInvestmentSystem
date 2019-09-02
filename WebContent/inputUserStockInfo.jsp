@@ -28,7 +28,11 @@
 		if (companyStockBaseInfo != null && companies != null && userInformation != null) {
 			if (companyStockBaseInfo.getCompanyName() != null && companies.getId() > 0 && userInformation.getUserId() > 0) {
 %>
-				<p><%= companyStockBaseInfo.getCompanyName() %>について以下の情報を入力してください。</p>
+				<p>
+					<%= companyStockBaseInfo.getCompanyName() %>について以下の情報を入力してください。
+					<img src="./img/howto.jpg" class="howto" title="使い方を見る">
+				</p>
+
 				<form action="RegistUserStockInfo" method="post">
 					<input type="hidden" name="userId" value="<%= userInformation.getUserId() %>">
 					<input type="hidden" name="compId" value="<%= companies.getId() %>">

@@ -52,3 +52,8 @@ table.list-table, td.list-table, th.list-table {
 tr.list-table:nth-child(even) {
 	background: #EEEEEE;
 }
+
+img.howto {
+	width: 30px;
+	height: 30px;
+}
