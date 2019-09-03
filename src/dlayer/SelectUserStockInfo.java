@@ -78,16 +78,17 @@ public class SelectUserStockInfo {
 		return userStockInfoList;
 	}
 
-	public ArrayList<UserStockInfo> selectFromBuyingPriceRange(int rangeStart, int rangeEnd) throws SQLException {
+	public ArrayList<UserStockInfo> selectFromBuyingPriceRange(int userId, int rangeStart, int rangeEnd) throws SQLException {
 		ArrayList<UserStockInfo> userStockInfoList = new ArrayList<UserStockInfo>();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE buying_price  >= ? AND buying_price <= ?";
+		String sql = selectAll + "WHERE user_id = ? AND buying_price  >= ? AND buying_price <= ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
-		psttmt.setInt(1, rangeStart);
-		psttmt.setInt(2, rangeEnd);
+		psttmt.setInt(1, userId);
+		psttmt.setInt(2, rangeStart);
+		psttmt.setInt(3, rangeEnd);
 
 		ResultSet rs = psttmt.executeQuery();
 
@@ -110,16 +111,17 @@ public class SelectUserStockInfo {
 		return userStockInfoList;
 	}
 
-	public ArrayList<UserStockInfo> selectFromSellingPriceRange(int rangeStart, int rangeEnd) throws SQLException {
+	public ArrayList<UserStockInfo> selectFromSellingPriceRange(int userId, int rangeStart, int rangeEnd) throws SQLException {
 		ArrayList<UserStockInfo> userStockInfoList = new ArrayList<UserStockInfo>();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE selling_price >= ? AND selling_price <= ?";
+		String sql = selectAll + "WHERE user_id = ? AND selling_price >= ? AND selling_price <= ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
-		psttmt.setInt(1, rangeStart);
-		psttmt.setInt(2, rangeEnd);
+		psttmt.setInt(1, userId);
+		psttmt.setInt(2, rangeStart);
+		psttmt.setInt(3, rangeEnd);
 
 		ResultSet rs = psttmt.executeQuery();
 
@@ -143,16 +145,17 @@ public class SelectUserStockInfo {
 		return userStockInfoList;
 	}
 
-	public ArrayList<UserStockInfo> selectFromHoldingRange(int rangeStart, int rangeEnd) throws SQLException {
+	public ArrayList<UserStockInfo> selectFromHoldingRange(int userId, int rangeStart, int rangeEnd) throws SQLException {
 		ArrayList<UserStockInfo> userStockInfoList = new ArrayList<UserStockInfo>();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE num_stock >= ? AND num_stock <= ?";
+		String sql = selectAll + "WHERE user_id = ? AND num_stock >= ? AND num_stock <= ?";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
-		psttmt.setInt(1, rangeStart);
-		psttmt.setInt(2, rangeEnd);
+		psttmt.setInt(1, userId);
+		psttmt.setInt(2, rangeStart);
+		psttmt.setInt(3, rangeEnd);
 
 		ResultSet rs = psttmt.executeQuery();
 
@@ -175,14 +178,15 @@ public class SelectUserStockInfo {
 		return userStockInfoList;
 	}
 
-	public ArrayList<UserStockInfo> selectAllBuying() throws SQLException {
+	public ArrayList<UserStockInfo> selectAllBuying(int userId) throws SQLException {
 		ArrayList<UserStockInfo> userStockInfoList = new ArrayList<UserStockInfo>();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE buying_price > 0";
+		String sql = selectAll + "WHERE user_id = ? AND buying_price > 0";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setInt(1, userId);
 
 		ResultSet rs = psttmt.executeQuery();
 
@@ -206,14 +210,15 @@ public class SelectUserStockInfo {
 	}
 
 
-	public ArrayList<UserStockInfo> selectAllSelling() throws SQLException {
+	public ArrayList<UserStockInfo> selectAllSelling(int userId) throws SQLException {
 		ArrayList<UserStockInfo> userStockInfoList = new ArrayList<UserStockInfo>();
 
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		String sql = selectAll + "WHERE selling_price > 0";
+		String sql = selectAll + "WHERE user_id = ? AND selling_price > 0";
 
 		PreparedStatement psttmt = conn.prepareStatement(sql);
+		psttmt.setInt(1, userId);
 
 		ResultSet rs = psttmt.executeQuery();
 
