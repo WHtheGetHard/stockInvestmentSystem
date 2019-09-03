@@ -40,8 +40,23 @@ public class RegistUserStockInformation extends HttpServlet {
 		userStockInfo.setCompId(Integer.parseInt(request.getParameter("compId")));
 
 		userStockInfo.setNumStock(Integer.parseInt(request.getParameter("numStock")));
-		userStockInfo.setBuyingPrice(Integer.parseInt(request.getParameter("buyingPrice")));
-		userStockInfo.setSellingPrice(Integer.parseInt(request.getParameter("sellingPrice")));
+
+		String buyingPrice = request.getParameter("buyingPrice");
+
+		if ("".equals(buyingPrice)) {
+			userStockInfo.setBuyingPrice(0);
+		} else {
+			userStockInfo.setBuyingPrice(Integer.parseInt(buyingPrice));
+		}
+
+
+		String sellingPrice = request.getParameter("sellingPrice");
+
+		if ("".equals(sellingPrice)) {
+			userStockInfo.setSellingPrice(0);
+		} else {
+			userStockInfo.setSellingPrice(Integer.parseInt(sellingPrice));
+		}
 
 		RegistUserStockInfo registUserStockInfo = new RegistUserStockInfo();
 
