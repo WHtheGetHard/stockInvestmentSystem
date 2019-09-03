@@ -3,6 +3,7 @@
 
 <%@ page import="fieldformat.CompanyStockBaseInfo " %>
 <%@ page import="fieldformat.Companies" %>
+<%@ page import="fieldformat.UserStockInfo" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -36,6 +37,7 @@
 				<form action="RegistUserStockInformation" method="post">
 					<input type="hidden" name="userId" value="<%= userInformation.getUserId() %>">
 					<input type="hidden" name="compId" value="<%= companies.getId() %>">
+					<input type="hidden" name="compName" value="<%= companyStockBaseInfo.getCompanyName() %>">
 					<div id="stockInfoInput">
 						<table>
 							<tr>
@@ -63,6 +65,37 @@
 
 					<input type="submit" value="登録" disabled>
 				</form>
+<%
+			}
+		}
+
+		UserStockInfo userStockInfo = new UserStockInfo();
+		userStockInfo = (UserStockInfo) request.getAttribute("userStockInfo");
+
+		MessageAreaDisplayContents messageAreaDisplayContentsShow = new MessageAreaDisplayContents();
+		messageAreaDisplayContentsShow = (MessageAreaDisplayContents) request.getAttribute("messageAreaDisplayContents");
+
+		if (userStockInfo != null && messageAreaDisplayContentsShow != null) {
+			if (userStockInfo.getUserId() > 0 && !messageAreaDisplayContentsShow.isError()) {
+				String registedCompanyName = (String) request.getAttribute("registedCompanyName");
+%>
+				<%= registedCompanyName %>の保有株情報を以下の通り登録しました。
+				<table>
+					<tr>
+						<td>保有数</td>
+						<td><%= userStockInfo.getNumStock() %></td>
+					</tr>
+
+					<tr>
+						<td>買値</td>
+						<td><%= userStockInfo.getBuyingPrice() %></td>
+					</tr>
+
+					<tr>
+						<td>売値</td>
+						<td><%= userStockInfo.getSellingPrice() %></td>
+					</tr>
+				</table>
 <%
 			}
 		}

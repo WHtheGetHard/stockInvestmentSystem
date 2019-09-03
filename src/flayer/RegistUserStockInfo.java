@@ -54,9 +54,15 @@ public class RegistUserStockInfo {
 
 		if (userInfoIsExist && companyIsExist) {
 			InsertUserStockInfo insertUserStockInfo = new InsertUserStockInfo();
-			insertUserStockInfo.execInsert(userStockInfo);
+			int insertNumber = insertUserStockInfo.execInsert(userStockInfo);
 
-			messageAreaDisplayContents.setError(false);
+			if (insertNumber == 0) {
+				messageAreaDisplayContents.setError(true);
+				messageAreaDisplayContents.setMessage("インサートでエラーが発生しました。");
+			} else {
+				messageAreaDisplayContents.setError(false);
+			}
+
 
 		} else {
 			if (userInfoIsExist) {

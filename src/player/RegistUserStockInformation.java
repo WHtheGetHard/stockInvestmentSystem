@@ -64,7 +64,11 @@ public class RegistUserStockInformation extends HttpServlet {
 
 		messageAreaDisplayContents = registUserStockInfo.execRegist(userStockInfo);
 
+		String registedCompanyName = request.getParameter("compName");
+
 		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+		request.setAttribute("userStockInfo", userStockInfo);
+		request.setAttribute("registedCompanyName", registedCompanyName);
 
 		RequestDispatcher rd = request.getRequestDispatcher("inputUserStockInfo.jsp");
 
