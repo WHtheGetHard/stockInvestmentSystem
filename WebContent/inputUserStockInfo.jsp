@@ -33,7 +33,7 @@
 					<img src="./img/howto.jpg" class="howto" title="使い方を見る">
 				</p>
 
-				<form action="RegistUserStockInfo" method="post">
+				<form action="RegistUserStockInformation" method="post">
 					<input type="hidden" name="userId" value="<%= userInformation.getUserId() %>">
 					<input type="hidden" name="compId" value="<%= companies.getId() %>">
 					<div id="stockInfoInput">

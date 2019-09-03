@@ -2,25 +2,28 @@ package player;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fieldformat.MessageAreaDisplayContents;
 import fieldformat.UserStockInfo;
+import flayer.RegistUserStockInfo;
 
 /**
- * Servlet implementation class RegistUserStockInfo
+ * Servlet implementation class RegistUserStockInformation
  */
-@WebServlet("/RegistUserStockInfo")
-public class RegistUserStockInfo extends HttpServlet {
+@WebServlet("/RegistUserStockInformation")
+public class RegistUserStockInformation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistUserStockInfo() {
+    public RegistUserStockInformation() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,6 +43,17 @@ public class RegistUserStockInfo extends HttpServlet {
 		userStockInfo.setBuyingPrice(Integer.parseInt(request.getParameter("buyingPrice")));
 		userStockInfo.setSellingPrice(Integer.parseInt(request.getParameter("sellingPrice")));
 
+		RegistUserStockInfo registUserStockInfo = new RegistUserStockInfo();
+
+		MessageAreaDisplayContents messageAreaDisplayContents = new MessageAreaDisplayContents();
+
+		messageAreaDisplayContents = registUserStockInfo.execRegist(userStockInfo);
+
+		request.setAttribute("messageAreaDisplayContents", messageAreaDisplayContents);
+
+		RequestDispatcher rd = request.getRequestDispatcher("inputUserStockInfo.jsp");
+
+		rd.forward(request, response);
 	}
 
 	/**
