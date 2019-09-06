@@ -369,9 +369,9 @@ public class ExecSelectUserStockInfo {
 		}
 
 		if (userStockInfo.getNumStock() > 0) {
-			isDuplicated = false;
-		} else {
 			isDuplicated = true;
+		} else {
+			isDuplicated = false;
 		}
 
 		return isDuplicated;
