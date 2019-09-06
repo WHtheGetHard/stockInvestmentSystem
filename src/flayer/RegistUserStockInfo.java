@@ -25,6 +25,12 @@ public class RegistUserStockInfo {
 			e.printStackTrace();
 		}
 
+		ExecSelectUserStockInfo execSelectUserStockInfo = new ExecSelectUserStockInfo();
+
+		boolean isDuplicated = false;
+
+		isDuplicated = execSelectUserStockInfo.comfirmDuplicate(userStockInfo.getUserId(), userStockInfo.getCompId());
+
 		boolean userInfoIsExist = false;
 
 		if (userInformation.getUserName() != null) {
@@ -52,7 +58,7 @@ public class RegistUserStockInfo {
 			companyIsExist = false;
 		}
 
-		if (userInfoIsExist && companyIsExist) {
+		if (userInfoIsExist && companyIsExist && !isDuplicated) {
 			InsertUserStockInfo insertUserStockInfo = new InsertUserStockInfo();
 			int insertNumber = insertUserStockInfo.execInsert(userStockInfo);
 
@@ -65,19 +71,21 @@ public class RegistUserStockInfo {
 
 
 		} else {
-			if (userInfoIsExist) {
+			if (isDuplicated) {
 				messageAreaDisplayContents.setError(true);
 
-				messageAreaDisplayContents.setMessage("企業情報に誤りがあります。");
-
-			} else if (companyIsExist) {
-				messageAreaDisplayContents.setError(true);
-
-				messageAreaDisplayContents.setMessage("ログイン状態に問題があります。");
+				messageAreaDisplayContents.setMessage("既に登録済みの企業情報です。");
 			} else {
-				messageAreaDisplayContents.setError(true);
+				if (userInfoIsExist) {
+					messageAreaDisplayContents.setError(true);
 
-				messageAreaDisplayContents.setMessage("エラーが発生しました。");
+					messageAreaDisplayContents.setMessage("企業情報に誤りがあります。");
+
+				} else if (companyIsExist) {
+					messageAreaDisplayContents.setError(true);
+
+					messageAreaDisplayContents.setMessage("ログイン状態に問題があります。");
+				}
 			}
 		}
 
