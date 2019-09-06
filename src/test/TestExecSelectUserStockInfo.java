@@ -160,10 +160,10 @@ public class TestExecSelectUserStockInfo {
 
 
 		// START----------- comfirm comfirmDuplicate(int userId, int compId) method -----------START
-		int userId = 1; int compId = 9;
+//		int userId = 1; int compId = 9;
 //		int userId = 1; int compId = 10;
 //		int userId = 2; int compId = 10;
-//		int userId = 3; int compid = 10;
+		int userId = 3; int compId = 10;
 
 		boolean isDuplicated = false;
 		isDuplicated = execSelectUserStockInfo.comfirmDuplicate(userId, compId);
