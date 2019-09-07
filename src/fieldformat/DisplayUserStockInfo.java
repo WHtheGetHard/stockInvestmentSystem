@@ -13,6 +13,12 @@ public class DisplayUserStockInfo {
 
 	private int sellingPrice;
 
+	private String numStockStr;
+
+	private String buyingPriceStr;
+
+	private String sellingPriceStr;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -59,5 +65,29 @@ public class DisplayUserStockInfo {
 
 	public void setSellingPrice(int sellingPrice) {
 		this.sellingPrice = sellingPrice;
+	}
+
+	public String getNumStockStr() {
+		return numStockStr;
+	}
+
+	public void setNumStockStr(String numStockStr) {
+		this.numStockStr = numStockStr;
+	}
+
+	public String getBuyingPriceStr() {
+		return buyingPriceStr;
+	}
+
+	public void setBuyingPriceStr(String buyingPriceStr) {
+		this.buyingPriceStr = buyingPriceStr;
+	}
+
+	public String getSellingPriceStr() {
+		return sellingPriceStr;
+	}
+
+	public void setSellingPriceStr(String sellingPriceStr) {
+		this.sellingPriceStr = sellingPriceStr;
 	}
 }
