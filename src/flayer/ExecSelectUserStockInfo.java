@@ -54,19 +54,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
-
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -110,19 +98,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -167,18 +143,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -222,18 +187,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -277,19 +231,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
-
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -334,19 +276,7 @@ public class ExecSelectUserStockInfo {
 			companiesList.add(companies);
 		}
 
-		for (int i = 0; i < userStockInfoList.size(); i++) {
-			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
-
-			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
-			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
-			displayUserStockInfo.setCompName(companiesList.get(i).getName());
-			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
-			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
-			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
-
-			displayUserStockInfoList.add(displayUserStockInfo);
-		}
-
+		displayUserStockInfoList = convertToDisplayUserStockInfo(companiesList, userStockInfoList);
 
 		return displayUserStockInfoList;
 	}
@@ -375,5 +305,30 @@ public class ExecSelectUserStockInfo {
 		}
 
 		return isDuplicated;
+	}
+
+	private ArrayList<DisplayUserStockInfo> convertToDisplayUserStockInfo(ArrayList<Companies> companiesList, ArrayList<UserStockInfo> userStockInfoList) {
+		ArrayList<DisplayUserStockInfo> displayUserStockInfoList = new ArrayList<DisplayUserStockInfo>();
+
+		CurrencyEdit currencyEdit = new CurrencyEdit();
+
+		for (int i = 0; i < userStockInfoList.size(); i++) {
+			DisplayUserStockInfo displayUserStockInfo = new DisplayUserStockInfo();
+
+			displayUserStockInfo.setUserId(userStockInfoList.get(i).getUserId());
+			displayUserStockInfo.setCompId(userStockInfoList.get(i).getCompId());
+			displayUserStockInfo.setCompName(companiesList.get(i).getName());
+			displayUserStockInfo.setNumStock(userStockInfoList.get(i).getNumStock());
+			displayUserStockInfo.setBuyingPrice(userStockInfoList.get(i).getBuyingPrice());
+			displayUserStockInfo.setSellingPrice(userStockInfoList.get(i).getSellingPrice());
+
+
+			displayUserStockInfo.setNumStockStr(currencyEdit.commaEdit(String.valueOf(userStockInfoList.get(i).getNumStock())));
+			displayUserStockInfo.setBuyingPriceStr(currencyEdit.commaEdit(String.valueOf(userStockInfoList.get(i).getBuyingPrice())));
+			displayUserStockInfo.setSellingPriceStr(currencyEdit.commaEdit(String.valueOf(userStockInfoList.get(i).getSellingPrice())));
+
+			displayUserStockInfoList.add(displayUserStockInfo);
+		}
+		return displayUserStockInfoList;
 	}
 }
